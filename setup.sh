@@ -45,6 +45,10 @@ sudo apt-get install ctags
 # Install clangd
 bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
+# Install wakatime
+sudo pip install wakatime
+cd git clone https://github.com/sobolevn/wakatime-zsh-plugin.git ~/.oh-my-zsh/custom/plugins/wakatime 
+
 
 
 
