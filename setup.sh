@@ -1,13 +1,13 @@
 #!/bin/bash
 
 # 镜像
-mv /etc/apt/sources.list /etc/apt/sources_back.list
-mv ./sources.list /etc/apt/
+# mv /etc/apt/sources.list /etc/apt/sources_back.list
+# mv ./sources.list /etc/apt/
 
 # update
-sudo apt update
+# sudo apt update
 # Install
-sudo apt install curl git openssh-server net-tools
+# sudo apt install curl git openssh-server net-tools
 
 # Install zsh
 sudo apt install zsh
