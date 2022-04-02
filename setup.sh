@@ -8,21 +8,27 @@
 # sudo apt update
 # Install
 # sudo apt install curl git openssh-server net-tools
+git config --global user.email "2036459752@qq.com"
+git config --global user.name "candala-zzpp"
+
+
+# Install pip
+sudo apt install pip
+
+# Install node npm
+sudo apt install nodejs npm
 
 # Install zsh
 sudo apt install zsh
-cp ./.zshrc ~
 
 # Install ohmyzsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-cp ./bullet-train.zsh-theme ~/.oh-my-zsh/custom/themes/ 
+#sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install oh my tmux
 ./tmux.sh
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 # ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
-cp ./.tmux.conf ~
-cp ./.tmux.conf.local ~
+
 # Plug
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
@@ -37,27 +43,21 @@ sudo easy_install3 pip
 sudo add-apt-repository ppa:neovim-ppa/stable
 sudo apt-get update
 sudo apt-get install -y neovim
-cp ./nvim ~/.config/ -rf
 
 # Install ctag
 sudo apt-get install ctags
 
 # Install clangd
-bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+
 
 # Install wakatime
 sudo pip install wakatime
-cd git clone https://github.com/sobolevn/wakatime-zsh-plugin.git ~/.oh-my-zsh/custom/plugins/wakatime 
+git clone https://github.com/sobolevn/wakatime-zsh-plugin.git ~/.oh-my-zsh/custom/plugins/wakatime 
 
 
-
-
-
-
-
-
-
-
-
-
-
+cp ./nvim ~/.config/ -rf
+cp ./.tmux.conf ~
+cp ./.tmux.conf.local ~
+cp ./.zshrc ~
+cp ./bullet-train.zsh-theme ~/.oh-my-zsh/custom/themes/ 
