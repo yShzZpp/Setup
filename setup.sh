@@ -16,23 +16,23 @@ git config --global user.name "candala-zzpp"
 sudo apt install pip
 
 # Install node npm
-sudo apt install nodejs npm
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get update && sudo apt-get install yarn
+sudo apt-get install -y nodejs
 
 # Install zsh
 sudo apt install zsh
 
 # Install ohmyzsh
-#sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+#sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install oh my tmux
-./tmux.sh
+sudo apt install tmux
 git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 # ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
 
 # Plug
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-
 
 # Install Python3
 sudo apt-get install -y python-dev python-pip python3-dev
