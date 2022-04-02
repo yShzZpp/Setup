@@ -50,6 +50,8 @@ sudo apt-get install ctags
 # Install clangd
 sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
+# Install nerdfonts
+sudo unzip SourceCodePro -d /usr/share/fonts/SourceCodePro
 
 # Install wakatime
 sudo pip install wakatime
