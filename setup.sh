@@ -47,6 +47,12 @@ sudo apt-get install -y neovim
 # Install ctag
 sudo apt-get install ctags
 
+# Install fzf
+sudo apt install fzf
+
+# Install ag
+sudo apt-get install silversearcher-ag
+
 # Install clangd
 sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
 
