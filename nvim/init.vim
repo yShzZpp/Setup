@@ -107,7 +107,7 @@ let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
 let g:NERDTreeDirArrowExpandable = '▶ '
 let g:NERDTreeDirArrowCollapsible = '▼ '
 " let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
-let g:NERDTreeShowLineNumbers=1 " 是否显示行号
+let g:NERDTreeShowLineNumbers=0 " 是否显示行号
 let g:NERDTreeHidden=0     "不显示隐藏文件
 let NERDTreeShowHidden=1
 
@@ -124,8 +124,6 @@ let NERDTreeShowHidden=1
 " au VimEnter * call NERDTreeHighlightFile('.html', 'yellow', 'none', 'yellow', '#151515')
 " au VimEnter * call NERDTreeHighlightFile('.o', 'lightgreen', 'none', 'yellow', '#151515')
 " highlight! link NERDTreeFlags NERDTreeDir
-" Plug 'ryanoasis/vim-devicons'
-set encoding=UTF-8
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:webdevicons_enable_airline_tabline = 1
@@ -243,13 +241,13 @@ let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+" let g:airline_left_alt_sep = '（'
 " let g:airline_right_alt_sep = '|'
 
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = 'Ξ'
 "使用 :AirlineTheme xxx 更换主题
-let g:airline_theme = 'base16'  " 主题灰白
 nnoremap <silent> <leader>1 :AirlineTheme base16<cr>
 nnoremap <silent> <leader>2 :AirlineTheme molokai<cr>
 nnoremap <silent> <leader>3 :AirlineTheme bubblegum<cr>
@@ -264,10 +262,8 @@ let g:gruvbox_contrast_dark = 'hard'
 
 syntax enable
 colorscheme gruvbox
-" set background=light
 set background=dark
 
-let g:airline_theme = 'molokai'
 let g:airline_theme = 'bubblegum' "绿
 
 let g:airline#extensions#whitespace#enabled = 0 "空白符号计数不使能"
@@ -320,7 +316,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDAltDelims_java = 1
 
 " Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' }}
+" let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' }}
 
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
@@ -339,7 +335,6 @@ let g:indent_guides_start_level           = 2  " 从第二层开始可视化显�
 
 " #if end
 Plug 'alpaca-tc/vim-endwise'
-let mapleader = ','
 
 "rainbow
 Plug 'frazrepo/vim-rainbow'
@@ -356,11 +351,6 @@ let g:rainbow_load_separately = [
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
-"monokai
-"
-" Plug 'tomasr/molokai'
-" " let g:molokai_original = 1
-" let g:rehash256 = 1
 
 "fzf
 Plug 'junegunn/fzf', { 'dir':'~/.fzf','do': { -> fzf#install() } }
@@ -370,17 +360,15 @@ Plug 'junegunn/fzf.vim'
 "       \ 'ctrl-s': 'split',
 "       \ 'ctrl-v': 'vsplit'
 "       \ }
-"<Leader>f在当前目录搜索文件
-" nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <F3> :Files<CR>
-"<Leader>b切换Buffer中的文件
-" nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <F4> :Buffers<CR>
+"在当前目录搜索文件
+nnoremap <silent> <F3>f :Files<CR>
+"切换Buffer中的文件
+nnoremap <silent> <F3>w :Ag<cr>
+"切换Buffer中的文件
+nnoremap <silent> <F3>b :Buffers<CR>
 "
 nnoremap <c-p> :call Fzf_dev()<cr>
-" 通过文字查找 真牛
 " sudo apt-get install silversearcher-ag
-nnoremap <c-f> :Ag<cr>
 " let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 " let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 "Augmenting Ag command using fzf#vim#with_preview function
@@ -573,11 +561,11 @@ Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_leader_key = '<leader>' "似乎会和coc冲突
 
 "对齐
-Plug 'godlygeek/tabular'
-nmap <Leader>= :Tabularize /=<CR>
-vmap <Leader>= :Tabularize /=<CR>
-nmap <Leader>: :Tabularize /:\zs<CR>
-vmap <Leader>: :Tabularize /:\zs<CR>
+" Plug 'godlygeek/tabular'
+" nmap <Leader>= :Tabularize /=<CR>
+" vmap <Leader>= :Tabularize /=<CR>
+" nmap <Leader>: :Tabularize /:\zs<CR>
+" vmap <Leader>: :Tabularize /:\zs<CR>
 
 "自动对齐
 Plug 'chiel92/vim-autoformat'
