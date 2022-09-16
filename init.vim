@@ -573,7 +573,7 @@ Plug 'chiel92/vim-autoformat'
 " autocmd FileType c,cpp autocmd BufWritePre * :Autoformat
 
 " autoformat
-" nnoremap <leader>ff :call FormatCode("", "file")<CR>
+" nnoremap <F4>f :call FormatCode("", "file")<CR>
 " vnoremap <leader>ff :call FormatCode(visualmode(), "file")<CR>
 " nnoremap <leader>gf :call FormatCode("", "Google")<CR>
 " vnoremap <leader>gf :call FormatCode(visualmode(), "Google")<CR>

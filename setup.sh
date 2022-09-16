@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pwd=`pwd`
+
 # 镜像
 # mv /etc/apt/sources.list /etc/apt/sources_back.list
 # mv ./sources.list /etc/apt/
@@ -68,6 +70,7 @@ sudo apt install clang-format
 cp ./.clang-format ~/
 
 
+ln -s $pwd/init.vim ~/.config/nvim/init.vim
 cp ./nvim ~/.config/ -rf
 cp ./.tmux.conf ~
 cp ./.tmux.conf.local ~
