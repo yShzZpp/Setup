@@ -63,6 +63,10 @@ sudo unzip SourceCodePro -d /usr/share/fonts/SourceCodePro
 sudo pip install wakatime
 git clone https://github.com/sobolevn/wakatime-zsh-plugin.git ~/.oh-my-zsh/custom/plugins/wakatime 
 
+# Install clang-format
+sudo apt install clang-format
+cp ./.clang-format ~/
+
 
 cp ./nvim ~/.config/ -rf
 cp ./.tmux.conf ~
