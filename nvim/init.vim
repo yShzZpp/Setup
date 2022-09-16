@@ -7,6 +7,12 @@ inoremap <A-h> <Left>
 inoremap <A-k> <Up>
 inoremap <A-j> <Down>
 inoremap <A-d> <backspace>
+
+vnoremap n nzz
+vnoremap N Nzz
+map H ^
+map L $
+
 set tabstop=4 
 set softtabstop=4 
 set shiftwidth=4
@@ -14,6 +20,13 @@ set autoindent
 set relativenumber
 set splitbelow
 set nu
+
+set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+set termencoding=utf-8
+set encoding=utf-8
+
+filetype plugin indent on
+
 
 "修改切换窗格的快捷键
 noremap <c-j> <c-w>j 
@@ -41,7 +54,7 @@ nnoremap <silent> ms :set nu rnu <CR>
 " terminal 
 tnoremap <c-t> <c-\><c-n>
 
-let mapleader = ','		
+let mapleader = ';'		
 nnoremap <silent> <leader>n :e ~/.config/nvim/init.vim<CR>
 " nnoremap <silent> <leader>d :bdelete <CR>
 " let g:coc_disable_startup_warning = 1
@@ -343,7 +356,7 @@ let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 " let g:rehash256 = 1
 
 "fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'dir':'~/.fzf','do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " let g:fzf_action = {
 "       \ 'ctrl-t': 'tab split',
@@ -357,9 +370,11 @@ nnoremap <silent> <Leader>b :Buffers<CR>
 "
 nnoremap <c-p> :call Fzf_dev()<cr>
 " 通过文字查找 真牛
+" sudo apt-get install silversearcher-ag
 nnoremap <c-f> :Ag<cr>
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-" Augmenting Ag command using fzf#vim#with_preview function
+" let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+" let $FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+"Augmenting Ag command using fzf#vim#with_preview function
 "   * fzf#vim#with_preview([[options], preview window, [toggle keys...]])
 "     * For syntax-highlighting, Ruby and any of the following tools are required:
 "       - Highlight: http://www.andre-simon.de/doku/highlight/en/highlight.php
@@ -484,6 +499,7 @@ let g:tagbar_compact = 1
 "当编辑代码时，在Tagbar自动追踪变量
 " let g:tagbar_autoshowtag = 1
 " let g:tagbar_left = 1                                          "让tagbar在页面左侧显示，默认右边
+ let g:tagbar_sort = 0
 
 "bufexplorer
 " Plug 'jlanzarotta/bufexplorer'
@@ -547,6 +563,11 @@ Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_leader_key = '<leader>' "似乎会和coc冲突
 nnoremap <silent><leader><space> :e!<cr>  "更新文件状态
 
-
+"对齐
+Plug 'godlygeek/tabular'
+nmap <Leader>= :Tabularize /=<CR>
+vmap <Leader>= :Tabularize /=<CR>
+nmap <Leader>: :Tabularize /:\zs<CR>
+vmap <Leader>: :Tabularize /:\zs<CR>
 
 call plug#end()
