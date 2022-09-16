@@ -13,14 +13,14 @@ vnoremap N Nzz
 map H ^
 map L $
 
-set tabstop=4 
-set softtabstop=4 
+set tabstop=4
+set softtabstop=4
 set shiftwidth=4
-set autoindent 
+set autoindent
 set relativenumber
 set splitbelow
 set nu
-let mapleader = ';'		
+let mapleader = ';'
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
@@ -30,8 +30,8 @@ filetype plugin indent on
 
 
 "修改切换窗格的快捷键
-noremap <c-j> <c-w>j 
-noremap <c-k> <c-w>k 
+noremap <c-j> <c-w>j
+noremap <c-k> <c-w>k
 noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 " set term=screen
@@ -52,7 +52,7 @@ nnoremap <silent> w0 :vertical resize +3<CR>
 nnoremap <silent> mn :set nonu nornu <CR>
 nnoremap <silent> ms :set nu rnu <CR>
 
-" terminal 
+" terminal
 tnoremap <c-t> <c-\><c-n>
 
 nnoremap <silent> <leader>n :e ~/.config/nvim/init.vim<CR>
@@ -61,8 +61,10 @@ nnoremap <silent> <leader>r :source ~/.config/nvim/init.vim<CR>
 " let g:coc_disable_startup_warning = 1
 
 
+nnoremap <silent> <Leader>f :Autoformat<CR>
+
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 """""""""""""""""""""""""""""""""""插件"""""""""""""""""""""""""""""""""""
@@ -154,9 +156,9 @@ let s:rspec_red = "FE405F"
 let s:git_orange = "F54D27"
 let s:gray = "808A87"
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExtensionHighlightColor['o'] = s:gray 
-let g:NERDTreeExtensionHighlightColor['h'] = s:blue 
-let g:NERDTreeExtensionHighlightColor['c'] = s:green 
+let g:NERDTreeExtensionHighlightColor['o'] = s:gray
+let g:NERDTreeExtensionHighlightColor['h'] = s:blue
+let g:NERDTreeExtensionHighlightColor['c'] = s:green
 let g:NERDTreeExtensionHighlightColor['so'] = s:pink
 let g:NERDTreeExtensionHighlightColor['o'] = s:pink
 let g:NERDTreeExtensionHighlightColor['a'] = s:pink
@@ -205,7 +207,7 @@ Plug 'tpope/vim-surround'
 " ds"             # 删除  ==> "Hello world!" -> Hello world!
 " csw"            # 添加  ==> Hello -> "Hello"
 " yss"            # 添加-整行 ==> Hello world -> "Hello world"
-" S"			  # 可视模式下 添加	
+" S"			  # 可视模式下 添加
 
 "select where amount { " '
 Plug 'gcmt/wildfire.vim'
@@ -229,13 +231,13 @@ au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 set laststatus=1  "永远显示状态栏
-"https://github.com/powerline/fonts 下载powerline字体 
+"https://github.com/powerline/fonts 下载powerline字体
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
 let g:airline#extensions#tabline#enabled = 1 "显示窗口tab和buffer
 let g:airline_statusline_ontop=0 "默认状态线上方
 
 if !exists('g:airline_symbols')
-let g:airline_symbols = {}
+	let g:airline_symbols = {}
 endif
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
@@ -265,7 +267,7 @@ colorscheme gruvbox
 " set background=light
 set background=dark
 
-let g:airline_theme = 'molokai' 
+let g:airline_theme = 'molokai'
 let g:airline_theme = 'bubblegum' "绿
 
 let g:airline#extensions#whitespace#enabled = 0 "空白符号计数不使能"
@@ -274,17 +276,17 @@ let g:airline#extensions#keymap#enabled = 1
 let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 let g:airline#extensions#tabline#buffer_idx_format = {
-\ '0': '0 ',
-\ '1': '1 ',
-\ '2': '2 ',
-\ '3': '3 ',
-\ '4': '4 ',
-\ '5': '5 ',
-\ '6': '6 ',
-\ '7': '7 ',
-\ '8': '8 ',
-\ '9': '9 '
-\}
+			\ '0': '0 ',
+			\ '1': '1 ',
+			\ '2': '2 ',
+			\ '3': '3 ',
+			\ '4': '4 ',
+			\ '5': '5 ',
+			\ '6': '6 ',
+			\ '7': '7 ',
+			\ '8': '8 ',
+			\ '9': '9 '
+			\}
 " 设置切换tab的快捷键 <\> + <i> 切换到第i个 tab
 
 nmap <A-1> <Plug>AirlineSelectTab1
@@ -303,7 +305,7 @@ nmap <A-\> <Plug>AirlineSelectNextTab
 " 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
 nmap <leader>q :bp<cr>:bd #<cr>
 
-" 注释 virtual leader cc/cu 
+" 注释 virtual leader cc/cu
 Plug 'preservim/nerdcommenter'
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
@@ -318,7 +320,7 @@ let g:NERDDefaultAlign = 'left'
 let g:NERDAltDelims_java = 1
 
 " Add your own custom formats or override the defaults
-let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' }} 
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' }}
 
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
@@ -326,7 +328,7 @@ let g:NERDCommentEmptyLines = 1
 " Enable trimming of trailing whitespace when uncommenting
 let g:NERDTrimTrailingWhitespace = 1
 
-" Enable NERDCommenterToggle to check all selected lines is commented or not 
+" Enable NERDCommenterToggle to check all selected lines is commented or not
 let g:NERDToggleCheckAllLines = 1
 
 
@@ -337,7 +339,7 @@ let g:indent_guides_start_level           = 2  " 从第二层开始可视化显�
 
 " #if end
 Plug 'alpaca-tc/vim-endwise'
-let mapleader = ','		
+let mapleader = ','
 
 "rainbow
 Plug 'frazrepo/vim-rainbow'
@@ -345,11 +347,11 @@ au FileType c,cpp,objc,objcpp call rainbow#load()
 let g:rainbow_active = 1
 
 let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-    \ ]
+			\ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+			\ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+			\ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+			\ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+			\ ]
 
 let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
 let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
@@ -369,9 +371,11 @@ Plug 'junegunn/fzf.vim'
 "       \ 'ctrl-v': 'vsplit'
 "       \ }
 "<Leader>f在当前目录搜索文件
-nnoremap <silent> <Leader>f :Files<CR>
+" nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <F3> :Files<CR>
 "<Leader>b切换Buffer中的文件
-nnoremap <silent> <Leader>b :Buffers<CR>
+" nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <F4> :Buffers<CR>
 "
 nnoremap <c-p> :call Fzf_dev()<cr>
 " 通过文字查找 真牛
@@ -386,13 +390,13 @@ nnoremap <c-f> :Ag<cr>
 "       - CodeRay: http://coderay.rubychan.de/
 "       - Rouge: https://github.com/jneen/rouge
 "
-  " :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
+" :Ag  - Start fzf with hidden preview window that can be enabled with "?" key
 "   :Ag! - Start fzf in fullscreen and display the preview window above
 command! -bang -nargs=* Ag
-	  \ call fzf#vim#ag(<q-args>,
-	  \                 <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-	  \                         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
-	  \                 <bang>0)
+			\ call fzf#vim#ag(<q-args>,
+			\                 <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+			\                         : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+			\                 <bang>0)
 
 " complete
 
@@ -429,12 +433,12 @@ set signcolumn=yes
 " " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " " other plugin before putting this into your config.
 " inoremap <silent><expr> <TAB>
-	" \ pumvisible() ? "\<C-n>"
-	"  \ <SID>check_back_space() ? "\<TAB>" :
-	"  \ coc#refresh()
+" \ pumvisible() ? "\<C-n>"
+"  \ <SID>check_back_space() ? "\<TAB>" :
+"  \ coc#refresh()
 " inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent><expr> <s-TAB> 
-	\ pumvisible() ? "\<C-n>":"\<C-p>"
+inoremap <silent><expr> <s-TAB>
+			\ pumvisible() ? "\<C-n>":"\<C-p>"
 
 " function! s:check_back_space() abort
 "   let col = col('.') - 1
@@ -497,14 +501,14 @@ nmap <silent> gr <Plug>(coc-references)
 
 "tagbar比taglist好
 Plug 'majutsushi/tagbar'
-nnoremap <silent> tb :TagbarToggle<CR> 
+nnoremap <silent> tb :TagbarToggle<CR>
 "去除第一行的帮助信息
 let g:tagbar_ctags_bin = '/usr/bin/ctags-exuberant'                       "tagbar以来ctags插件
 let g:tagbar_compact = 1
 "当编辑代码时，在Tagbar自动追踪变量
 " let g:tagbar_autoshowtag = 1
 " let g:tagbar_left = 1                                          "让tagbar在页面左侧显示，默认右边
- let g:tagbar_sort = 0
+let g:tagbar_sort = 0
 
 "bufexplorer
 " Plug 'jlanzarotta/bufexplorer'
@@ -524,22 +528,22 @@ let g:winManagerWindowLayout='NERDTree|Tagbar'
 let g:NERDTree_title='[NERD Tree]'
 function! NERDTree_Start()
 	exec 'q'
-    exec 'NERDTreeToggle'
+	exec 'NERDTreeToggle'
 endfunction
- 
+
 function! NERDTree_IsValid()
-    return 1
+	return 1
 endfunction
 
 let g:Tagbar_title='[Tagbar]&[NERD Tree]'
 function! Tagbar_Start()
 	exec 'q'
 	exec 'TagbarToggle'
-    return 1
+	return 1
 endfunction
 
 function! Tagbar_IsValid()
-    return 1
+	return 1
 endfunction
 let g:tagbar_vertical = 30
 
@@ -563,10 +567,10 @@ nnoremap Y :CopyText<cr>
 nnoremap D :DeleteText<cr>
 nnoremap C :ChangeText<cr>
 
+
 "高级搜索
 Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_leader_key = '<leader>' "似乎会和coc冲突
-nnoremap <silent><leader><space> :e!<cr>  "更新文件状态
 
 "对齐
 Plug 'godlygeek/tabular'
@@ -574,5 +578,37 @@ nmap <Leader>= :Tabularize /=<CR>
 vmap <Leader>= :Tabularize /=<CR>
 nmap <Leader>: :Tabularize /:\zs<CR>
 vmap <Leader>: :Tabularize /:\zs<CR>
+
+"自动对齐
+Plug 'chiel92/vim-autoformat'
+" 保存自动对齐
+" autocmd FileType c,cpp autocmd BufWritePre * :Autoformat
+
+" autoformat
+" nnoremap <leader>ff :call FormatCode("", "file")<CR>
+" vnoremap <leader>ff :call FormatCode(visualmode(), "file")<CR>
+" nnoremap <leader>gf :call FormatCode("", "Google")<CR>
+" vnoremap <leader>gf :call FormatCode(visualmode(), "Google")<CR>
+" nnoremap <leader>cf :call FormatCode("", "Chromium")<CR>
+" vnoremap <leader>cf :call FormatCode(visualmode(), "Chromium")<CR>
+" nnoremap <leader>lf :call FormatCode("", "LLVM")<CR>
+" vnoremap <leader>lf :call FormatCode(visualmode(), "LLVM")<CR>
+
+func! FormatCode(exe_mode, style) range
+	if a:exe_mode == ""
+		let firstline_no = 1
+		let lastline_no = line("$")
+	else
+		let firstline_no = a:firstline
+		let lastline_no = a:lastline
+	endif
+	let l:save_formatdef = g:formatdef_clangformat
+	let l:tmpa = join(["clang-format --lines=", firstline_no, ":", lastline_no], "")
+	let g:formatdef_clangformat = "'" . l:tmpa . " --assume-filename=' . bufname('%') . ' -style=" . a:style . "'"
+	let formatcommand = ":Autoformat"
+	exec formatcommand
+	let g:formatdef_clangformat = l:save_formatdef
+endfunc
+
 
 call plug#end()
