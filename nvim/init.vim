@@ -20,6 +20,7 @@ set autoindent
 set relativenumber
 set splitbelow
 set nu
+let mapleader = ';'		
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
@@ -54,7 +55,6 @@ nnoremap <silent> ms :set nu rnu <CR>
 " terminal 
 tnoremap <c-t> <c-\><c-n>
 
-let mapleader = ';'		
 nnoremap <silent> <leader>n :e ~/.config/nvim/init.vim<CR>
 " nnoremap <silent> <leader>d :bdelete <CR>
 " let g:coc_disable_startup_warning = 1
@@ -64,9 +64,10 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+"""""""""""""""""""""""""""""""""""插件"""""""""""""""""""""""""""""""""""
 
 call plug#begin('~/.vim/plugged')
-" terminal
+" terminal alt = 打开terminal
 Plug 'skywind3000/vim-terminal-help'
 
 " ctrl A X 加减时间
@@ -163,9 +164,7 @@ Plug 'ryanoasis/vim-devicons'
 " let NERDTreeMinimalUI ="  1
 " let NERDTreeDirArrows = 1
 
-" Plug 'kien/ctrlp.vim'
-" multi cursor
-
+" multi cursor #Ctrl 上下左右
 Plug 'mg979/vim-visual-multi'
 
 " git and svn
@@ -201,7 +200,8 @@ Plug 'tpope/vim-surround'
 " csw"            # 添加  ==> Hello -> "Hello"
 " yss"            # 添加-整行 ==> Hello world -> "Hello world"
 " S"			  # 可视模式下 添加	
-" select where amount { " '
+
+"select where amount { " '
 Plug 'gcmt/wildfire.vim'
 
 " pairs
@@ -242,16 +242,15 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.whitespace = 'Ξ'
 "使用 :AirlineTheme xxx 更换主题
 let g:airline_theme = 'base16'  " 主题灰白
-nnoremap <silent> <A-1> :AirlineTheme base16<cr>
-nnoremap <silent> <A-2> :AirlineTheme molokai<cr>
-nnoremap <silent> <A-3> :AirlineTheme bubblegum<cr>
-nnoremap <silent> <A-7> :colorscheme <cr>
-nnoremap <silent> <A-8> :colorscheme default<cr>
-nnoremap <silent> <A-9> :colorscheme gruvbox<cr>
-nnoremap <silent> <A-9> :colorscheme gruvbox<cr>
-nnoremap <silent> <A-0> :colorscheme monokai<cr>
-nnoremap <silent> <A--> :set background=dark<cr>
-nnoremap <silent> <A-_> :set background=light<cr>
+nnoremap <silent> <leader>1 :AirlineTheme base16<cr>
+nnoremap <silent> <leader>2 :AirlineTheme molokai<cr>
+nnoremap <silent> <leader>3 :AirlineTheme bubblegum<cr>
+nnoremap <silent> <leader>7 :colorscheme <cr>
+nnoremap <silent> <leader>8 :colorscheme default<cr>
+nnoremap <silent> <leader>9 :colorscheme gruvbox<cr>
+nnoremap <silent> <leader>0 :colorscheme monokai<cr>
+nnoremap <silent> <leader>- :set background=dark<cr>
+nnoremap <silent> <leader>_ :set background=light<cr>
 "修改gruvbox的黑暗模式的颜色深度
 let g:gruvbox_contrast_dark = 'hard'
 
@@ -282,19 +281,19 @@ let g:airline#extensions#tabline#buffer_idx_format = {
 \}
 " 设置切换tab的快捷键 <\> + <i> 切换到第i个 tab
 
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
+nmap <A-1> <Plug>AirlineSelectTab1
+nmap <A-2> <Plug>AirlineSelectTab2
+nmap <A-3> <Plug>AirlineSelectTab3
+nmap <A-4> <Plug>AirlineSelectTab4
+nmap <A-5> <Plug>AirlineSelectTab5
+nmap <A-6> <Plug>AirlineSelectTab6
+nmap <A-7> <Plug>AirlineSelectTab7
+nmap <A-8> <Plug>AirlineSelectTab8
+nmap <A-9> <Plug>AirlineSelectTab9
 " 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
-nmap <leader>- <Plug>AirlineSelectPrevTab
+nmap <A--> <Plug>AirlineSelectPrevTab
 " 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
-nmap <leader>= <Plug>AirlineSelectNextTab
+nmap <A-\> <Plug>AirlineSelectNextTab
 " 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
 nmap <leader>q :bp<cr>:bd #<cr>
 
