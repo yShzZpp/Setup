@@ -56,6 +56,7 @@ nnoremap <silent> ms :set nu rnu <CR>
 tnoremap <c-t> <c-\><c-n>
 
 nnoremap <silent> <leader>n :e ~/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>r :source ~/.config/nvim/init.vim<CR>
 " nnoremap <silent> <leader>d :bdelete <CR>
 " let g:coc_disable_startup_warning = 1
 
@@ -153,16 +154,21 @@ let s:rspec_red = "FE405F"
 let s:git_orange = "F54D27"
 let s:gray = "808A87"
 let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExtensionHighlightColor['o'] = s:gray " sets the color of o files to blue
-let g:NERDTreeExtensionHighlightColor['h'] = s:blue " sets the color of h files to blue
-let g:NERDTreeExtensionHighlightColor['c'] = s:green " sets the color of c files to blue
-let g:NERDTreeExtensionHighlightColor['cpp'] = s:green " sets the color of cpp files to blue
+let g:NERDTreeExtensionHighlightColor['o'] = s:gray 
+let g:NERDTreeExtensionHighlightColor['h'] = s:blue 
+let g:NERDTreeExtensionHighlightColor['c'] = s:green 
+let g:NERDTreeExtensionHighlightColor['so'] = s:pink
+let g:NERDTreeExtensionHighlightColor['o'] = s:pink
+let g:NERDTreeExtensionHighlightColor['a'] = s:pink
+let g:NERDTreeExtensionHighlightColor['cpp'] = s:yellow
+let g:NERDTreeExtensionHighlightColor['md'] = s:blue
 let g:NERDTreeExtensionHighlightColor['c++'] = s:green
+
 
 " NERDTree Icon
 Plug 'ryanoasis/vim-devicons'
-" let NERDTreeMinimalUI ="  1
-" let NERDTreeDirArrows = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 " multi cursor #Ctrl 上下左右
 Plug 'mg979/vim-visual-multi'
