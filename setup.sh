@@ -78,4 +78,5 @@ cp ./.zshrc ~
 cp ./bullet-train.zsh-theme ~/.oh-my-zsh/custom/themes/ 
 
 # Shell Snippet
+chmod a+x shell/snippet.sh
 ./shell/snippet.sh
