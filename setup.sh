@@ -76,3 +76,6 @@ cp ./.tmux.conf ~
 cp ./.tmux.conf.local ~
 cp ./.zshrc ~
 cp ./bullet-train.zsh-theme ~/.oh-my-zsh/custom/themes/ 
+
+# Shell Snippet
+./shell/snippet.sh

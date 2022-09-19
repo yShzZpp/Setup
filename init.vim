@@ -56,8 +56,8 @@ nnoremap <silent> ms :set nu rnu <CR>
 tnoremap <c-t> <c-\><c-n>
 
 nnoremap <silent> <leader>n :e ~/.config/nvim/init.vim<CR>
-" nnoremap <silent> <leader>r :source ~/.config/nvim/init.vim<CR>
-nnoremap <silent> <leader>r :source %<CR>
+nnoremap <silent> <leader>r :source ~/.config/nvim/init.vim<CR>
+" nnoremap <silent> <leader>r :source %<CR>
 " nnoremap <silent> <leader>d :bdelete <CR>
 " let g:coc_disable_startup_warning = 1
 
@@ -325,6 +325,7 @@ let g:NERDAltDelims_java = 1
 
 " Add your own custom formats or override the defaults
 " let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' }}
+let g:NERDCustomDelimiters = { 'cpp': { 'left': '//','right': '' }}
 
 " Allow commenting and inverting empty lines (useful when commenting a region)
 let g:NERDCommentEmptyLines = 1
@@ -610,9 +611,12 @@ endfunc
 Plug 'sirver/ultisnips'
 Plug 'keelii/vim-snippets'
 let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsExpandTrigger="<enter>"
 " 使用 tab 切换下一个触发点，shit+tab 上一个触发点
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c+j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c+k>"
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 let g:UltiSnipsEditSplit="vertical"
 
