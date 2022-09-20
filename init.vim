@@ -259,18 +259,28 @@ let g:airline_symbols.whitespace = 'Ξ'
 nnoremap <silent> <leader>1 :AirlineTheme base16<cr>
 nnoremap <silent> <leader>2 :AirlineTheme molokai<cr>
 nnoremap <silent> <leader>3 :AirlineTheme bubblegum<cr>
-nnoremap <silent> <leader>7 :colorscheme <cr>
-nnoremap <silent> <leader>8 :colorscheme default<cr>
+nnoremap <silent> <leader>7 :colorscheme iceberg<cr>
+nnoremap <silent> <leader>8 :colorscheme <cr>
 nnoremap <silent> <leader>9 :colorscheme gruvbox<cr>
 nnoremap <silent> <leader>0 :colorscheme monokai<cr>
 nnoremap <silent> <leader>- :set background=dark<cr>
 nnoremap <silent> <leader>_ :set background=light<cr>
-"修改gruvbox的黑暗模式的颜色深度
+
+set background=dark
+
+"修改gruvbox的模式的颜色深度
+colorscheme gruvbox
 let g:gruvbox_contrast_dark = 'hard'
+let g:gruvbox_contrast_light = 'medium'
+
+
+"修改everforest的黑暗模式的颜色深度
+let g:everforest_background = 'soft'
+" let g:everforest_better_performance = 1
+
+"修改garbage-oracle的黑暗模式的颜色深度
 
 syntax enable
-colorscheme gruvbox
-set background=dark
 
 let g:airline_theme = 'bubblegum' "绿
 
