@@ -32,6 +32,9 @@ if [[ bfirst -eq 1 ]];then
 	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 	sudo apt-get update && sudo apt-get install yarn
 	sudo apt-get install -y nodejs
+	npm cache clean -f
+	sudo npm install -g n
+	n stable
 
 	# Install zsh
 	sudo apt install zsh
