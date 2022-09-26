@@ -37,5 +37,7 @@ if [[ $? == 1 ]];then
 fi
 
 pwd=`pwd`
+
 rm ~/.config/nvim -rf
 ln -s -f $pwd/nvim/nvim ~/.config/nvim
+
