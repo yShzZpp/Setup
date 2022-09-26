@@ -37,9 +37,5 @@ if [[ $? == 1 ]];then
 fi
 
 pwd=`pwd`
-tar	-xvf $pwd/font/local.tar.bz2 -C $pwd/font
-
-if [ "$1" == "init" ];then
-	echo "init"
-	cp ./local/* /usr/share/fonts/ -r
-fi
+ln -s -f $pwd/tmux/.tmux.conf ~/
+ln -s -f $pwd/tmux/.tmux.conf.local ~/

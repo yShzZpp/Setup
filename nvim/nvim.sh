@@ -37,9 +37,5 @@ if [[ $? == 1 ]];then
 fi
 
 pwd=`pwd`
-tar	-xvf $pwd/font/local.tar.bz2 -C $pwd/font
-
-if [ "$1" == "init" ];then
-	echo "init"
-	cp ./local/* /usr/share/fonts/ -r
-fi
+rm ~/.config/nvim
+ln -s -f $pwd/nvim/nvim ~/.config/nvim
