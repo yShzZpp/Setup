@@ -67,7 +67,8 @@ if [[ bfirst -eq 1 ]];then
 	sudo apt-get install silversearcher-ag
 
 	# Install clangd
-	sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+	# sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+	sudo ./clang/llvm.sh 14
 
 	# Install nerdfonts
 	sudo unzip SourceCodePro -d /usr/share/fonts/SourceCodePro
