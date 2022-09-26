@@ -83,6 +83,9 @@ fi
 
 #config
 
+# mao
+cp ./mao ~
+
 # fonts
 chmod a+x font/font.sh
 ./font/font.sh $1

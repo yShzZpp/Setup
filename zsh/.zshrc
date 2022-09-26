@@ -2,13 +2,54 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+
+# configuration
+#
+# find 无法使用通配符
+setopt no_nomatch
+
+# variable
+#
+compile_json="-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
+
+# environment
+#
 export ZSH="$HOME/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8    
 export LANG=en_US.UTF-8    
 export EDITOR=/usr/bin/nvim 
-# find 无法使用通配符
-setopt no_nomatch
+export PATH="$PATH:/home/zzpp/ybin"
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH_WAKATIME_BIN=~/.wakatime/wakatime-cli
 
+
+# nickname
+#
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="source ~/.oh-my-zsh"
+alias stnginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf"
+alias renginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf -s reload"
+alias nginxconfig="nvim /usr/local/nginx/conf/nginx.conf"
+alias cdgit="cd ~/mygit/"
+alias cdhisi="cd /home/Hisilicon/"
+
+# alias nvim='TERM=xterm-256color /bin/nvim'
+alias isaigu="ssh isaiguserver250@n3879m4762.zicp.vip -p 21068"
+alias tb="trans -b"
+alias tz="trans :zh"
+alias tbz="trans -b :zh"
+
+alias tn="tmux -2 new -t"
+alias tk="tmux kill-session -t"
+alias tka="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
+alias tls="tmux list-sessions "
+alias tlw="tmux list-windows"
+alias tt="tmux -2 at -t"
+
+alias mountShare='sudo mount -t vboxsf LinuxShare ~/share'
+alias cdshare='cd ~/share'
+
+# zsh 配置
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -114,20 +155,6 @@ plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
-# nickname
-alias get_idf='. $HOME/work/esp/esp-idf/export.sh'
-alias cdesp='cd $HOME/work/esp/esp-idf'
-alias zshconfig='nvim ~/.zshrc'
-
-alias tn="tmux -2 new -t"
-alias tk="tmux kill-session -t"
-alias tka="tmux ls | grep : | cut -d. -f1 | awk '{print substr($1, 0, length($1)-1)}' | xargs kill"
-alias tt="tmux -2 at -t"
-alias tls="tmux list-sessions "
-alias tlw="tmux list-windows"
-
-alias mountShare='sudo mount -t vboxsf LinuxShare ~/share'
-alias cdshare='cd ~/share'
 
 
 
@@ -157,3 +184,22 @@ alias cdshare='cd ~/share'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+MEMORY=`free -mh | grep "Mem" | awk '{print "used:",$3,"/",$2,"( free: ",$4,")  "}'`
+MEM_USAGE=`free -m | grep "Mem" | awk '{printf("%3.1f%%", (($3/$2)*100))}'`
+ # - IP..................: `hostname -I`
+echo "
+========================================================
+- Release.............: `cat /etc/issue|awk '{print $1,$2}'|tr -s '\n' ' '`
+- Kernel..............: `uname -r`
+- Hostname............: `uname -n`
+- Username............: `whoami`
+- Login Users.........: Total `users | wc -w` user(s)
+========================================================
+- Memory..............: $MEMORY
+- Memory usage........: $MEM_USAGE
+========================================================"
+cat ~/mao
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
