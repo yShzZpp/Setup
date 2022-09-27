@@ -213,18 +213,8 @@ Plug 'gcmt/wildfire.vim'
 
 " pairs
 Plug 'jiangmiao/auto-pairs'
-au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
-" leaderf
-" Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+au Filetype FILETYPE let b:AutoPairs = {"(": ")","<": ">"}
 
-" weather
-" Plug 'mattn/webapi-vim'
-" Plug 'Wildog/airline-weather.vim'
-" let g:weather#area = 'guangzhou,china'
-" let g:weather#unit = 'metric'
-" let g:weather#cache_file = '~/.cache/.weather'
-" let g:weather#cache_ttl = '3600'
-"
 "
 " nvim beautify
 Plug 'vim-airline/vim-airline'
@@ -353,7 +343,7 @@ let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 let g:indent_guides_start_level           = 2  " 从第二层开始可视化显示缩进
 
 " #if end
-Plug 'alpaca-tc/vim-endwise'
+" Plug 'alpaca-tc/vim-endwise'
 
 "rainbow
 Plug 'frazrepo/vim-rainbow'
@@ -406,6 +396,7 @@ command! -bang -nargs=* Ag
 			\                 <bang>0)
 
 " complete
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""coc"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "
@@ -436,33 +427,35 @@ set updatetime=300
 " " Always show the signcolumn
 set signcolumn=yes
 "
-" " Use tab for trigger completion with characters ahead and navigate.
-" " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" " other plugin before putting this into your config.
-" inoremap <silent><expr> <TAB>
-" \ pumvisible() ? "\<C-n>"
-"  \ <SID>check_back_space() ? "\<TAB>" :
-"  \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent><expr> <s-TAB>
-			\ pumvisible() ? "\<C-n>":"\<C-p>"
+"
+" 通过ctrl+j\k 实现上下选择 通过ctrl+y 或enter 实现选择
+inoremap <silent><expr> <C-j>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+	  \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
-"
-" " Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
-"
-" " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" " Coc only does snippet and additional edit on confirm.
-" inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-"
-" " Use `[c` and `]c` to navigate diagnostics
-" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-" nmap <silent> [c <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]c <Plug>(coc-diagnostic-next)
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" 查找错误
+nmap <silent> gP <Plug>(coc-diagnostic-prev)
+nmap <silent> gp <Plug>(coc-diagnostic-next)
+
 "
 " " GoTo code navigation.
 "
@@ -471,35 +464,68 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" 浮窗显示声明
+" Use ctrl+k to show documentation in preview window.
+nnoremap <silent> <c-k> :call ShowDocumentation()<CR>
 
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" 未知
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+" nmap <leader>ac  <Plug>(coc-codeaction)
 "
-" " Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
 "
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
-"
-" " Highlight the symbol and its references when holding the cursor.
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-"
-"
-"显示函数名列表
-"可能需要装ctags sudo apt-get install exuberant-ctags
-" Plug 'vim-scripts/taglist.vim'
-" nnoremap <silent> tl :TlistToggle<CR>
-" let Tlist_Auto_Open= 0 "auto open Tlist
-" let Tlist_Exit_OnlyWindow = 1 "exit Tlist if close sourse file
-" " let Tlist_Use_Right_Window = 1
-" let Tlist_Show_One_File = 1 "only show current file's Tlist
-" let Tlist_Compact_Format= 1 "Hide help menu
-" let Tlist_Ctags_Cmd = '/usr/bin/ctags-exuberant'
-"
-"
+
+""" 自动解决简单问题
+" Apply AutoFix to problem on the current line.
+nmap qf  <Plug>(coc-fix-current)
+
+" 在当前行进行codelens
+nmap <leader>cl  <Plug>(coc-codelens-action)
+
+
+" 进入可视模式 选取范围
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" 光标多选
+" 选取位置
+nmap <silent> <C-s> <Plug>(coc-cursors-position)
+" 选取单词
+nmap <silent> <C-w> <Plug>(coc-cursors-word)
+
+
 " 丝滑的移动
 " Plug 'terryma/vim-smooth-scroll'
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -622,9 +648,9 @@ Plug 'sirver/ultisnips'
 Plug 'keelii/vim-snippets'
 let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsExpandTrigger="<enter>"
-" 使用 tab 切换下一个触发点，shit+tab 上一个触发点
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
+" " 使用 tab 切换下一个触发点，shit+tab 上一个触发点
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c+j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c+k>"
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
