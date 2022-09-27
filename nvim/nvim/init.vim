@@ -8,8 +8,6 @@ inoremap <A-k> <Up>
 inoremap <A-j> <Down>
 inoremap <A-d> <backspace>
 
-vnoremap n nzz
-vnoremap N Nzz
 map H ^
 map L $
 
@@ -64,6 +62,8 @@ nnoremap <silent> <leader>r :source ~/.config/nvim/init.vim<CR>
 
 nnoremap <silent> <Leader>f :Autoformat<CR>
 
+
+" 保存文件关闭时的位置
 if has("autocmd")
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
@@ -430,9 +430,9 @@ set signcolumn=yes
 "
 " 通过ctrl+j\k 实现上下选择 通过ctrl+y 或enter 实现选择
 inoremap <silent><expr> <C-j>
-      \ coc#pum#visible() ? coc#pum#next(1) :
+	  \ coc#pum#visible() ? coc#pum#next(1) :
 	  \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
+	  \ coc#refresh()
 inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
 " Make <CR> to accept selected completion item or notify coc.nvim to format
@@ -523,7 +523,7 @@ nmap <leader>cl  <Plug>(coc-codelens-action)
 " 选取位置
 nmap <silent> <C-s> <Plug>(coc-cursors-position)
 " 选取单词
-nmap <silent> <C-w> <Plug>(coc-cursors-word)
+" nmap <silent> <C-w> <Plug>(coc-cursors-word)
 
 
 " 丝滑的移动
@@ -531,6 +531,12 @@ nmap <silent> <C-w> <Plug>(coc-cursors-word)
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+"
+" 通知
+Plug 'rcarriga/nvim-notify'
+" require("notify")("My super important message")
+" vim.notify = require("notify")
+" vim.notify("This is an error message", "error")
 
 "tagbar比taglist好
 Plug 'majutsushi/tagbar'
@@ -658,3 +664,88 @@ let g:UltiSnipsEditSplit="vertical"
 
 
 call plug#end()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
+" echo "Here's a bigger chunk of Lua code"
+
+lua << EOF
+
+vim.notify = require("notify")
+
+local coc_status_record = {}
+
+function coc_status_notify(msg, level)
+  local notify_opts = { title = "LSP Status", timeout = 3000, hide_from_history = true, on_close = reset_coc_status_record }
+  -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
+  if coc_status_record ~= {} then
+    notify_opts["replace"] = coc_status_record.id
+  end
+  coc_status_record = vim.notify(msg, level, notify_opts)
+end
+
+function reset_coc_status_record(window)
+  coc_status_record = {}
+end
+
+local coc_diag_record = {}
+
+function coc_diag_notify(msg, level)
+  local notify_opts = { title = "COC Diagnostics",stage = slide, timeout = 3000, on_close = reset_coc_diag_record }
+  -- if coc_diag_record is not {} then add it to notify_opts to key called "replace"
+  if coc_diag_record ~= {} then
+    notify_opts["replace"] = coc_diag_record.id
+  end
+  coc_diag_record = vim.notify(msg, level, notify_opts)
+end
+
+function reset_coc_diag_record(window)
+  coc_diag_record = {}
+end
+EOF
+
+function! s:DiagnosticNotify() abort
+  let l:info = get(b:, 'coc_diagnostic_info', {})
+  if empty(l:info) | return '' | endif
+  let l:msgs = []
+  let l:level = 'info'
+   if get(l:info, 'warning', 0)
+    let l:level = 'warn'
+  endif
+  if get(l:info, 'error', 0)
+    let l:level = 'error'
+  endif
+ 
+  if get(l:info, 'error', 0)
+    call add(l:msgs, ' Errors: ' . l:info['error'])
+  endif
+  if get(l:info, 'warning', 0)
+    call add(l:msgs, ' Warnings: ' . l:info['warning'])
+  endif
+  if get(l:info, 'information', 0)
+    call add(l:msgs, ' Infos: ' . l:info['information'])
+  endif
+  if get(l:info, 'hint', 0)
+    call add(l:msgs, ' Hints: ' . l:info['hint'])
+  endif
+  let l:msg = join(l:msgs, "\n")
+  if empty(l:msg) | let l:msg = ' All OK' | endif
+  call v:lua.coc_diag_notify(l:msg, l:level)
+endfunction
+
+function! s:StatusNotify() abort
+  let l:status = get(g:, 'coc_status', '')
+  let l:level = 'info'
+  if empty(l:status) | return '' | endif
+  call v:lua.coc_status_notify(l:status, l:level)
+endfunction
+
+function! s:InitCoc() abort
+  execute "lua vim.notify('Initialized coc.nvim for LSP support', 'info', { title = 'LSP Status' })"
+endfunction
+
+" notifications
+autocmd User CocNvimInit call s:InitCoc()
+" autocmd User CocDiagnosticChange call s:DiagnosticNotify()
+autocmd User CocStatusChange call s:StatusNotify()
+
