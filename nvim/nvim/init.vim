@@ -18,6 +18,7 @@ set autoindent
 set relativenumber
 set splitbelow
 set nu
+" set foldmethod=indent
 let mapleader = ';'
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
@@ -54,7 +55,8 @@ nnoremap <silent> ms :set nu rnu <CR>
 tnoremap <c-t> <c-\><c-n>
 
 nnoremap <silent> <leader>n :e ~/.config/nvim/init.vim<CR>
-nnoremap <silent> <leader>r :source ~/.config/nvim/init.vim<CR>
+" nnoremap <silent> <leader>r :source ~/.config/nvim/init.vim<CR>
+nnoremap <silent> <leader>r :so %<CR>
 " nnoremap <silent> <leader>r :source %<CR>
 " nnoremap <silent> <leader>d :bdelete <CR>
 " let g:coc_disable_startup_warning = 1
@@ -662,9 +664,14 @@ let g:UltiSnipsExpandTrigger="<tab>"
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 let g:UltiSnipsEditSplit="vertical"
 
+" Plug 'yShzZpp/nvim-test-plug'
+
 
 call plug#end()
 
+source ~/mygit/nvim-test-plug/plugin/nvim-test-plug.vim
+let g:ysh_test_value="abc"
+nnoremap <leader>y :Ysh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
 " echo "Here's a bigger chunk of Lua code"
