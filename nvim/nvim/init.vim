@@ -27,6 +27,8 @@ set encoding=utf-8
 
 filetype plugin indent on
 
+" 修改tp命令
+noremap t `
 
 "修改切换窗格的快捷键
 noremap <c-j> <c-w>j
