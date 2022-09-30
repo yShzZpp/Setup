@@ -679,7 +679,7 @@ let g:UltiSnipsEditSplit="vertical"
 call plug#end()
 
 source ~/mygit/nvim-test-plug/plugin/nvim-test-plug.vim
-let g:ysh_test_value="abc"
+let g:weather_city="韶关"
 nnoremap <leader>y :Ysh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
