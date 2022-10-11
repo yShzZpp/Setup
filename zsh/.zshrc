@@ -158,7 +158,7 @@ plugins=(git zsh-syntax-highlighting wakatime)
 source $ZSH/oh-my-zsh.sh
 
 # ROS
-type ros2 2>/dev/null
+type ros2 1>/dev/null 2>/dev/null
 if [ $? -eq 0 ];then
 	source /opt/ros/galactic/setup.zsh
 	source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
