@@ -80,6 +80,8 @@ if [[ bfirst -eq 1 ]];then
 	# Install wakatime
 	sudo pip install wakatime
 	git clone https://github.com/sobolevn/wakatime-zsh-plugin.git ~/.oh-my-zsh/custom/plugins/wakatime
+	WAKATIME_PATH=`which wakatime`
+	ln -s -f $WAKATIME_PATH ~/.wakatime/wakatime-cli
 
 	# Install clang-format
 	sudo apt install clang-format

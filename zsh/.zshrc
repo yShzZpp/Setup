@@ -15,9 +15,9 @@ compile_json="-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
 # environment
 #
 export ZSH="$HOME/.oh-my-zsh"
-export LC_ALL=en_US.UTF-8    
-export LANG=en_US.UTF-8    
-export EDITOR=/usr/bin/nvim 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export EDITOR=/usr/bin/nvim
 export PATH="$PATH:/home/zzpp/ybin"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH_WAKATIME_PROJECT_DETECTION=true
@@ -156,8 +156,14 @@ BULLETTRAIN_EXEC_TIME_BG="#BFC1D9"		#蓝灰
 plugins=(git zsh-syntax-highlighting wakatime)
 
 source $ZSH/oh-my-zsh.sh
-source /opt/ros/galactic/setup.zsh
-source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh 
+
+# ROS
+type ros2 2>/dev/null
+if [ $? -eq 0 ];then
+	source /opt/ros/galactic/setup.zsh
+	source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
+fi
+
 
 
 
@@ -190,7 +196,7 @@ source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 
 MEMORY=`free -mh | grep "Mem" | awk '{print "used:",$3,"/",$2,"( free: ",$4,")  "}'`
 MEM_USAGE=`free -m | grep "Mem" | awk '{printf("%3.1f%%", (($3/$2)*100))}'`
- # - IP..................: `hostname -I`
+# - IP..................: `hostname -I`
 echo "
 ========================================================
 - Release.............: `cat /etc/issue|awk '{print $1,$2}'|tr -s '\n' ' '`
