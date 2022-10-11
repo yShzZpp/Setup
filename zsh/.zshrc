@@ -20,6 +20,7 @@ export LANG=en_US.UTF-8
 export EDITOR=/usr/bin/nvim 
 export PATH="$PATH:/home/zzpp/ybin"
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export ZSH_WAKATIME_PROJECT_DETECTION=true
 export ZSH_WAKATIME_BIN=~/.wakatime/wakatime-cli
 
 
@@ -31,6 +32,7 @@ alias stnginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.c
 alias renginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf -s reload"
 alias nginxconfig="nvim /usr/local/nginx/conf/nginx.conf"
 alias cdgit="cd ~/mygit/"
+alias cdcan="cd ~/mygit/Company_Project/candela/project/"
 alias cdhisi="cd /home/Hisilicon/"
 
 # alias nvim='TERM=xterm-256color /bin/nvim'
@@ -151,10 +153,10 @@ BULLETTRAIN_EXEC_TIME_BG="#BFC1D9"		#蓝灰
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting wakatime)
 
 source $ZSH/oh-my-zsh.sh
-
+source /opt/ros/galactic/setup.zsh
 
 
 
