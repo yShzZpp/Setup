@@ -157,6 +157,7 @@ plugins=(git zsh-syntax-highlighting wakatime)
 
 source $ZSH/oh-my-zsh.sh
 source /opt/ros/galactic/setup.zsh
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh 
 
 
 

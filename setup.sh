@@ -64,7 +64,8 @@ if [[ bfirst -eq 1 ]];then
 	sudo apt-get install ctags
 
 	# Install fzf
-	sudo apt install fzf
+	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+	~/.fzf/install
 
 	# Install ag
 	sudo apt-get install silversearcher-ag
