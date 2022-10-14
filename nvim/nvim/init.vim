@@ -477,7 +477,7 @@ nmap <silent> gr <Plug>(coc-references)
 
 " 浮窗显示声明
 " Use ctrl+k to show documentation in preview window.
-nnoremap <silent> <c-k> :call ShowDocumentation()<CR>
+nnoremap <silent> <c-w> :call ShowDocumentation()<CR>
 
 function! ShowDocumentation()
   if CocAction('hasProvider', 'hover')
