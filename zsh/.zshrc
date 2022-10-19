@@ -165,6 +165,12 @@ if [ -d /opt/ros/galactic ];then
 	source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 fi
 
+# candela
+if [ -d ~/candelagit/shells ];then
+	export PATH=~/candelagit/shells:$PATH
+fi
+
+
 
 
 
