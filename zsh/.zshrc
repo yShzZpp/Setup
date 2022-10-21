@@ -164,11 +164,16 @@ if [ -d /opt/ros/galactic ];then
 	source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
 fi
 
-# candela
+# candela robot
 if [ -d ~/candelagit/shells ];then
 	export PATH=~/candelagit/shells:$PATH
 fi
 
+# tikong arm-buildroot-linux-gnueabihf
+if [ -d ~/work/v3s/host/bin ];then
+	export PATH=~/work/v3s/host/bin:$PATH
+	export LD_LIBRARY_PATH=~/work/v3s/host/lib:$LD_LIBRARY_PATH
+fi
 
 
 
