@@ -165,7 +165,7 @@ if [ -d /opt/ros/galactic ];then
 fi
 
 # candela robot
-if [ -d ~/candelagit/shells ];then
+if [ -d ~/candela_gitlab/shells ];then
 	export PATH=~/candelagit/shells:$PATH
 fi
 
