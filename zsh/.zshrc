@@ -175,6 +175,13 @@ if [ -d ~/work/v3s/host/bin ];then
 	export LD_LIBRARY_PATH=~/work/v3s/host/lib:$LD_LIBRARY_PATH
 fi
 
+# orangipi
+if [ -d /opt/orangepi/toolchain_gnueabi ];then
+	export ORANGEPI_GNUEABI=/opt/orangepi/toolchain_gnueabi
+	export ORANGEPI_GNUEABI_GCC=/opt/orangepi/toolchain_gnueabi/gcc-linaro-1.13.1-2012.02-x86_64_arm-linux-gnueabi/bin/arm-linux-gnueabi-gcc
+	export ORANGEPI_GNUEABI_GPP=/opt/orangepi/toolchain_gnueabi/gcc-linaro-1.13.1-2012.02-x86_64_arm-linux-gnueabi/bin/arm-linux-gnueabi-g++
+
+fi
 
 
 
