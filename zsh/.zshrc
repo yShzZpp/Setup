@@ -33,6 +33,7 @@ alias renginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.c
 alias nginxconfig="nvim /usr/local/nginx/conf/nginx.conf"
 alias cdgit="cd ~/mygit/"
 alias cdcan="cd ~/mygit/Company_Project/candela/project/"
+alias cdlab="cd ~/candela_gitlab"
 alias cdhisi="cd /home/Hisilicon/"
 
 # alias nvim='TERM=xterm-256color /bin/nvim'
@@ -235,3 +236,9 @@ cat ~/mao
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+if [ -d /home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells ];then
+export PATH=/home/zzpp/work/v3s/host/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/candelagit/shells:/opt/ros/galactic/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/.local/bin:/home/zzpp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/home/zzpp/.fzf/bin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/candela_gitlab/elevator_shells:/home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells
+fi
+if [ -d /home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells ];then
+export PATH=/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/candelagit/shells:/opt/ros/galactic/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/.local/bin:/home/zzpp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/home/zzpp/.fzf/bin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells
+fi
