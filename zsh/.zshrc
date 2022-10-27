@@ -242,3 +242,6 @@ fi
 if [ -d /home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells ];then
 export PATH=/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/candelagit/shells:/opt/ros/galactic/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/.local/bin:/home/zzpp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/home/zzpp/.fzf/bin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells
 fi
+if [ -d /home/zzpp/mygit/Company_Project/candela/project/shells ];then
+export PATH=/home/zzpp/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/root/.fzf/bin:/home/zzpp/mygit/Company_Project/candela/project/shells
+fi
