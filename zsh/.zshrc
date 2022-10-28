@@ -158,38 +158,8 @@ plugins=(git zsh-syntax-highlighting wakatime)
 
 source $ZSH/oh-my-zsh.sh
 
-# ROS
-# type ros2 1>/dev/null 2>/dev/null
-if [ -d /opt/ros/galactic ];then
-	source /opt/ros/galactic/setup.zsh
-	source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.zsh
-fi
-
-# candela robot
-if [ -d ~/candela_gitlab/shells ];then
-	export PATH=~/candelagit/shells:$PATH
-fi
-
-# tikong arm-buildroot-linux-gnueabihf
-if [ -d ~/work/v3s/host/bin ];then
-	export PATH=~/work/v3s/host/bin:$PATH
-	export LD_LIBRARY_PATH=~/work/v3s/host/lib:$LD_LIBRARY_PATH
-fi
-
-# orangipi
-# armel（低端ARM硬件，支持armv4以上版本），在执行浮点运算之前，浮点参数必须首先通过整数寄存器，然后传递到浮点运算单元。新的EABI ，也就是armhf，通过直接传递参数到浮点寄存器优化了浮点运算的调用约定。
-if [ -d /opt/orangepi/toolchain_armel ];then
-	export ORANGEPI_ARMEL=/opt/orangepi/toolchain_armel
-	export ORANGEPI_ARMEL_GCC=/opt/orangepi/toolchain_armel/gcc-linaro-1.13.1-2012.02-x86_64_arm-linux-gnueabi/bin/arm-linux-gnueabi-gcc
-	export ORANGEPI_ARMEL_GPP=/opt/orangepi/toolchain_armel/gcc-linaro-1.13.1-2012.02-x86_64_arm-linux-gnueabi/bin/arm-linux-gnueabi-g++
-fi
-
-if [ -d /opt/orangepi/toolchain_armhf ];then
-	export ORANGEPI_ARMHF=/opt/orangepi/toolchain_armhf
-	export ORANGEPI_ARMHF_GCC=/opt/orangepi/toolchain_armhf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-gcc
-	export ORANGEPI_ARMHF_GPP=/opt/orangepi/toolchain_armhf/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabihf/bin/arm-linux-gnueabihf-g++
-fi
-
+# 加载本地配置
+source ~/.localzshrc
 
 
 # User configuration
@@ -236,9 +206,3 @@ cat ~/mao
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -d /home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells ];then
-	export PATH=/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/candelagit/shells:/opt/ros/galactic/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/.local/bin:/home/zzpp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/home/zzpp/.fzf/bin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells
-
-elif [ -d /home/zzpp/mygit/Company_Project/candela/project/shells ];then
-	export PATH=/home/zzpp/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/root/.fzf/bin:/home/zzpp/mygit/Company_Project/candela/project/shells
-fi
