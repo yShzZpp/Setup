@@ -176,7 +176,7 @@ if [ -d ~/work/v3s/host/bin ];then
 	export LD_LIBRARY_PATH=~/work/v3s/host/lib:$LD_LIBRARY_PATH
 fi
 
-# orangipi 
+# orangipi
 # armel（低端ARM硬件，支持armv4以上版本），在执行浮点运算之前，浮点参数必须首先通过整数寄存器，然后传递到浮点运算单元。新的EABI ，也就是armhf，通过直接传递参数到浮点寄存器优化了浮点运算的调用约定。
 if [ -d /opt/orangepi/toolchain_armel ];then
 	export ORANGEPI_ARMEL=/opt/orangepi/toolchain_armel
@@ -237,11 +237,8 @@ cat ~/mao
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -d /home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells ];then
-export PATH=/home/zzpp/work/v3s/host/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/candelagit/shells:/opt/ros/galactic/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/.local/bin:/home/zzpp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/home/zzpp/.fzf/bin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/candela_gitlab/elevator_shells:/home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells
-fi
-if [ -d /home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells ];then
-export PATH=/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/candelagit/shells:/opt/ros/galactic/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/.local/bin:/home/zzpp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/home/zzpp/.fzf/bin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells
-fi
-if [ -d /home/zzpp/mygit/Company_Project/candela/project/shells ];then
-export PATH=/home/zzpp/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/root/.fzf/bin:/home/zzpp/mygit/Company_Project/candela/project/shells
+	export PATH=/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/work/v3s/host/bin:/home/zzpp/candelagit/shells:/home/zzpp/bin:/usr/local/bin:/home/zzpp/candelagit/shells:/opt/ros/galactic/bin:/home/zzpp/bin:/usr/local/bin:/home/zzpp/.local/bin:/home/zzpp/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/home/zzpp/.fzf/bin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/ybin:/home/zzpp/candela_gitlab/public/auto-connect-to-elevator-shells
+
+elif [ -d /home/zzpp/mygit/Company_Project/candela/project/shells ];then
+	export PATH=/home/zzpp/bin:/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/zzpp/ybin:/root/.fzf/bin:/home/zzpp/mygit/Company_Project/candela/project/shells
 fi
