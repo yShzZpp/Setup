@@ -13,10 +13,10 @@ fi
 if [[ bfirst -eq 1 ]];then
 
 	# 镜像
-	mv /etc/apt/sources.list /etc/apt/sources_back.list
-	mv ./sources.list /etc/apt/
+	# mv /etc/apt/sources.list /etc/apt/sources_back.list
+	# mv ./sources.list /etc/apt/
 
-	update
+	# update
 	sudo apt update
 
 	# Install
@@ -26,14 +26,14 @@ if [[ bfirst -eq 1 ]];then
 
 
 	# Install pip
-	sudo apt install pip
+	sudo apt install pip -y
 
 	# Install node npm
 	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-	sudo apt-get update && sudo apt-get install yarn
+	sudo apt-get install yarn -y
 	sudo apt-get install -y nodejs
 	npm cache clean -f
-	sudo npm install -g n
+	sudo npm install -g n -y
 	n stable
 
 	# Install zsh
@@ -43,7 +43,7 @@ if [[ bfirst -eq 1 ]];then
 	sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 	# Install oh my tmux
-	sudo apt install tmux
+	sudo apt install tmux -y
 	git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 	# ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
 
@@ -61,14 +61,14 @@ if [[ bfirst -eq 1 ]];then
 	sudo apt-get install -y neovim
 
 	# Install ctag
-	sudo apt-get install ctags
+	sudo apt-get install ctags -y 
 
 	# Install fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
 
 	# Install ag
-	sudo apt-get install silversearcher-ag
+	sudo apt-get install silversearcher-ag -y
 
 	# Install clangd
 	# sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
@@ -84,7 +84,7 @@ if [[ bfirst -eq 1 ]];then
 	ln -s -f $WAKATIME_PATH ~/.wakatime/wakatime-cli
 
 	# Install clang-format
-	sudo apt install clang-format
+	sudo apt install clang-format -y
 
 fi
 
