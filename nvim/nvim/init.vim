@@ -11,9 +11,9 @@ inoremap <A-d> <backspace>
 map H ^
 map L $
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set autoindent
 set relativenumber
 set splitbelow
@@ -37,6 +37,9 @@ noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 " set term=screen
 
+nnoremap <leader>yaw "+yaw
+nnoremap <leader>yy "+yy
+vnoremap <leader>y "+y
 " 共享剪切板
 " set clipboard=unnamedplus
 " 设置文件类型
@@ -65,6 +68,7 @@ nnoremap <silent> <leader>r :so %<CR>
 
 
 nnoremap <silent> <Leader>f :Autoformat<CR>
+vnoremap <silent> <Leader>f :Autoformat<CR>
 
 
 " 保存文件关闭时的位置
@@ -678,9 +682,9 @@ let g:UltiSnipsEditSplit="vertical"
 
 call plug#end()
 
-source ~/mygit/nvim-test-plug/plugin/nvim-test-plug.vim
-let g:weather_city="韶关"
-nnoremap <leader>y :Ysh<CR>
+" source ~/mygit/nvim-test-plug/plugin/nvim-test-plug.vim
+" let g:weather_city="韶关"
+" nnoremap <leader>y :Ysh<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
 " echo "Here's a bigger chunk of Lua code"
