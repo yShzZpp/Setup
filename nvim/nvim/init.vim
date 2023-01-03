@@ -11,6 +11,7 @@ inoremap <A-d> <backspace>
 map H ^
 map L $
 
+let g:python3_host_prog="/usr/local/python3/bin/python3"
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
@@ -37,20 +38,21 @@ noremap <c-l> <c-w>l
 noremap <c-h> <c-w>h
 " set term=screen
 
+nnoremap <leader>p "+p
 nnoremap <leader>yaw "+yaw
 nnoremap <leader>yy "+yy
 vnoremap <leader>y "+y
 " 共享剪切板
-" set clipboard=unnamedplus
+" set clipboard+=unnamedplus
 " 设置文件类型
 ":set filetype=sh
 "自动保存
 set autowrite
 " 窗口大小
-nnoremap <silent> W9 :resize -3<CR>
-nnoremap <silent> W0 :resize +3<CR>
-nnoremap <silent> w9 :vertical resize -3<CR>
-nnoremap <silent> w0 :vertical resize +3<CR>
+nnoremap <silent> W9 :resize -10<CR>
+nnoremap <silent> W0 :resize +10<CR>
+nnoremap <silent> w9 :vertical resize -10<CR>
+nnoremap <silent> w0 :vertical resize +10<CR>
 
 " 行号显示
 nnoremap <silent> mn :set nonu nornu <CR>
@@ -86,12 +88,12 @@ Plug 'skywind3000/vim-terminal-help'
 Plug 'tpope/vim-speeddating'
 
 " 对齐
-Plug 'junegunn/vim-easy-align'
+" Plug 'junegunn/vim-easy-align'
 " Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+" xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+" nmap ga <Plug>(EasyAlign)
 
 " NERDTree
 Plug 'scrooloose/nerdtree'
@@ -548,7 +550,7 @@ nmap <silent> <C-s> <Plug>(coc-cursors-position)
 " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 "
 " 通知
-Plug 'rcarriga/nvim-notify'
+" Plug 'rcarriga/nvim-notify'
 " require("notify")("My super important message")
 " vim.notify = require("notify")
 " vim.notify("This is an error message", "error")
@@ -616,7 +618,7 @@ let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
 
 
 "文本替换
-Plug 'chxuan/vim-edit'
+" Plug 'chxuan/vim-edit'
 nnoremap Y :CopyText<cr>
 nnoremap D :DeleteText<cr>
 nnoremap C :ChangeText<cr>
@@ -665,9 +667,9 @@ func! FormatCode(exe_mode, style) range
 endfunc
 
 " 代码片段
-Plug 'sirver/ultisnips'
-Plug 'keelii/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
+" Plug 'sirver/ultisnips'
+" Plug 'keelii/vim-snippets'
+" let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsExpandTrigger="<enter>"
 " " 使用 tab 切换下一个触发点，shit+tab 上一个触发点
 " let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -675,7 +677,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c+j>"
 " let g:UltiSnipsJumpBackwardTrigger="<c+k>"
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
-let g:UltiSnipsEditSplit="vertical"
+" let g:UltiSnipsEditSplit="vertical"
 
 " Plug 'yShzZpp/nvim-test-plug'
 
@@ -689,83 +691,82 @@ call plug#end()
 """"""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
 " echo "Here's a bigger chunk of Lua code"
 
-lua << EOF
 
-vim.notify = require("notify")
+" vim.notify = require("notify")
 
-local coc_status_record = {}
-
-function coc_status_notify(msg, level)
-  local notify_opts = { title = "LSP Status", timeout = 3000, hide_from_history = true, on_close = reset_coc_status_record }
-  -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
-  if coc_status_record ~= {} then
-    notify_opts["replace"] = coc_status_record.id
-  end
-  coc_status_record = vim.notify(msg, level, notify_opts)
-end
-
-function reset_coc_status_record(window)
-  coc_status_record = {}
-end
-
-local coc_diag_record = {}
-
-function coc_diag_notify(msg, level)
-  local notify_opts = { title = "COC Diagnostics",stage = slide, timeout = 3000, on_close = reset_coc_diag_record }
-  -- if coc_diag_record is not {} then add it to notify_opts to key called "replace"
-  if coc_diag_record ~= {} then
-    notify_opts["replace"] = coc_diag_record.id
-  end
-  coc_diag_record = vim.notify(msg, level, notify_opts)
-end
-
-function reset_coc_diag_record(window)
-  coc_diag_record = {}
-end
-EOF
-
-function! s:DiagnosticNotify() abort
-  let l:info = get(b:, 'coc_diagnostic_info', {})
-  if empty(l:info) | return '' | endif
-  let l:msgs = []
-  let l:level = 'info'
-   if get(l:info, 'warning', 0)
-    let l:level = 'warn'
-  endif
-  if get(l:info, 'error', 0)
-    let l:level = 'error'
-  endif
- 
-  if get(l:info, 'error', 0)
-    call add(l:msgs, ' Errors: ' . l:info['error'])
-  endif
-  if get(l:info, 'warning', 0)
-    call add(l:msgs, ' Warnings: ' . l:info['warning'])
-  endif
-  if get(l:info, 'information', 0)
-    call add(l:msgs, ' Infos: ' . l:info['information'])
-  endif
-  if get(l:info, 'hint', 0)
-    call add(l:msgs, ' Hints: ' . l:info['hint'])
-  endif
-  let l:msg = join(l:msgs, "\n")
-  if empty(l:msg) | let l:msg = ' All OK' | endif
-  call v:lua.coc_diag_notify(l:msg, l:level)
-endfunction
-
-function! s:StatusNotify() abort
-  let l:status = get(g:, 'coc_status', '')
-  let l:level = 'info'
-  if empty(l:status) | return '' | endif
-  call v:lua.coc_status_notify(l:status, l:level)
-endfunction
-
-function! s:InitCoc() abort
-  execute "lua vim.notify('Initialized coc.nvim for LSP support', 'info', { title = 'LSP Status' })"
-endfunction
+" local coc_status_record = {}
+"
+" function coc_status_notify(msg, level)
+"   local notify_opts = { title = "LSP Status", timeout = 3000, hide_from_history = true, on_close = reset_coc_status_record }
+"   -- if coc_status_record is not {} then add it to notify_opts to key called "replace"
+"   if coc_status_record ~= {} then
+"     notify_opts["replace"] = coc_status_record.id
+"   end
+"   coc_status_record = vim.notify(msg, level, notify_opts)
+" end
+"
+" function reset_coc_status_record(window)
+"   coc_status_record = {}
+" end
+"
+" local coc_diag_record = {}
+"
+" function coc_diag_notify(msg, level)
+"   local notify_opts = { title = "COC Diagnostics",stage = slide, timeout = 3000, on_close = reset_coc_diag_record }
+"   -- if coc_diag_record is not {} then add it to notify_opts to key called "replace"
+"   if coc_diag_record ~= {} then
+"     notify_opts["replace"] = coc_diag_record.id
+"   end
+"   coc_diag_record = vim.notify(msg, level, notify_opts)
+" end
+"
+" function reset_coc_diag_record(window)
+"   coc_diag_record = {}
+" end
+" EOF
+"
+" function! s:DiagnosticNotify() abort
+"   let l:info = get(b:, 'coc_diagnostic_info', {})
+"   if empty(l:info) | return '' | endif
+"   let l:msgs = []
+"   let l:level = 'info'
+"    if get(l:info, 'warning', 0)
+"     let l:level = 'warn'
+"   endif
+"   if get(l:info, 'error', 0)
+"     let l:level = 'error'
+"   endif
+"
+"   if get(l:info, 'error', 0)
+"     call add(l:msgs, ' Errors: ' . l:info['error'])
+"   endif
+"   if get(l:info, 'warning', 0)
+"     call add(l:msgs, ' Warnings: ' . l:info['warning'])
+"   endif
+"   if get(l:info, 'information', 0)
+"     call add(l:msgs, ' Infos: ' . l:info['information'])
+"   endif
+"   if get(l:info, 'hint', 0)
+"     call add(l:msgs, ' Hints: ' . l:info['hint'])
+"   endif
+"   let l:msg = join(l:msgs, "\n")
+"   if empty(l:msg) | let l:msg = ' All OK' | endif
+"   call v:lua.coc_diag_notify(l:msg, l:level)
+" endfunction
+"
+" function! s:StatusNotify() abort
+"   let l:status = get(g:, 'coc_status', '')
+"   let l:level = 'info'
+"   if empty(l:status) | return '' | endif
+"   call v:lua.coc_status_notify(l:status, l:level)
+" endfunction
+"
+" function! s:InitCoc() abort
+"   execute "lua vim.notify('Initialized coc.nvim for LSP support', 'info', { title = 'LSP Status' })"
+" endfunction
 
 " notifications
 " autocmd User CocNvimInit call s:InitCoc()
 " autocmd User CocDiagnosticChange call s:DiagnosticNotify()
-autocmd User CocStatusChange call s:StatusNotify()
+" autocmd User CocStatusChange call s:StatusNotify()
 

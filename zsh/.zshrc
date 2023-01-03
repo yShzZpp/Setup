@@ -14,6 +14,7 @@ compile_json="-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
 
 # environment
 #
+export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -33,10 +34,10 @@ alias renginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.c
 alias nginxconfig="nvim /usr/local/nginx/conf/nginx.conf"
 alias cdgit="cd ~/mygit/Company_Project/candela/project/"
 alias cdm="cd ~/candela_gitlab/candela-robot/missionschedule/"
-alias cdlab="cd ~/candela_gitlab"
+alias cdlab="cd ~/gitlab"
 alias cdhisi="cd /home/Hisilicon/"
 
-# alias nvim='TERM=xterm-256color /bin/nvim'
+alias nvim='TERM=xterm-256color /bin/nvim'
 alias isaigu="ssh isaiguserver250@n3879m4762.zicp.vip -p 21068"
 alias tb="trans -b"
 alias tz="trans :zh"
@@ -71,27 +72,31 @@ BULLETTRAIN_PROMPT_ORDER=(
 )
 
 #用户名和主机
-BULLETTRAIN_CONTEXT_BG="#8a8a8a"		#灰
+# BULLETTRAIN_CONTEXT_BG="#8a8a8a"		#灰
 
 #时间
-BULLETTRAIN_TIME_BG="#9ed088"			#绿
+# BULLETTRAIN_TIME_BG="#9ed088"			#绿
+BULLETTRAIN_TIME_BG=green #绿
+BULLETTRAIN_TIME_FG=blcak
 
 #git
-BULLETTRAIN_GIT_BG="#D5D45F"			#黄
+# BULLETTRAIN_GIT_BG="#D5D45F"			#黄
+BULLETTRAIN_GIT_BG=white
+BULLETTRAIN_GIT_FG=black
 BULLETTRAIN_GIT_DELETED="%F{red} -%F{black}"				#🐍
 BULLETTRAIN_GIT_MODIFIED="%F{blue} M%F{black}"
 BULLETTRAIN_GIT_UNTRACKED="%F{yellow} Un%F{black}"
-
-BULLETTRAIN_GIT_COLORIZE_DIRTY=true
-BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR="#F9A094"		#红
-# BULLETTRAIN_GIT_ADDED     "%F{green}✚%F{black}"  Icon for added     files on stage
-# BULLETTRAIN_GIT_MODIFIED  "%F{blue}✹%F{black}"   Icon for modified  files
-# BULLETTRAIN_GIT_DELETED   "%F{red}✖%F{black}"    Icon for delete    files on stage
-# BULLETTRAIN_GIT_UNTRACKED "%F{yellow}✭%F{black}" Icon for untracked files
+BULLETTRAIN_GIT_ADDED="%F{green}✚%F{black}"    #Icon for added     files on stage
+#
+# BULLETTRAIN_GIT_COLORIZE_DIRTY=true
+# BULLETTRAIN_GIT_COLORIZE_DIRTY_BG_COLOR="#F9A094"		#红
+# BULLETTRAIN_GIT_MODIFIED  "%F{blue}✹%F{black}"   #Icon for modified  files
+# BULLETTRAIN_GIT_DELETED   "%F{red}✖%F{black}"    #Icon for delete    files on stage
+# BULLETTRAIN_GIT_UNTRACKED "%F{yellow}✭%F{black}" #Icon for untracked files
 
 #进程运行时间
 BULLETTRAIN_EXEC_TIME_ELAPSED=0;
-BULLETTRAIN_EXEC_TIME_BG="#BFC1D9"		#蓝灰
+# BULLETTRAIN_EXEC_TIME_BG="#BFC1D9"		#蓝灰
 
 
 # Set list of themes to pick from when loading at random
@@ -154,7 +159,8 @@ BULLETTRAIN_EXEC_TIME_BG="#BFC1D9"		#蓝灰
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting wakatime)
+plugins=(git zsh-syntax-highlighting zsh-wakatime)
+# plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -202,7 +208,7 @@ echo "
 - Memory..............: $MEMORY
 - Memory usage........: $MEM_USAGE
 ========================================================"
-cat ~/mao
+# cat ~/mao
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
