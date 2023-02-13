@@ -21,6 +21,9 @@ set splitbelow
 set nu
 " set foldmethod=indent
 let mapleader = ';'
+"折叠
+" set fdm=manual
+setlocal foldmethod=manual
 
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 set termencoding=utf-8
@@ -174,6 +177,7 @@ let g:NERDTreeExtensionHighlightColor['a'] = s:pink
 let g:NERDTreeExtensionHighlightColor['cpp'] = s:yellow
 let g:NERDTreeExtensionHighlightColor['md'] = s:blue
 let g:NERDTreeExtensionHighlightColor['c++'] = s:green
+let g:NERDTreeExtensionHighlightColor['launch'] = s:lightGreen
 
 
 " NERDTree Icon
@@ -413,6 +417,15 @@ command! -bang -nargs=* Ag
 			\                 <bang>0)
 
 " complete
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""highlight"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'octol/vim-cpp-enhanced-highlight'
+" let g:cpp_class_scope_highlight = 1 "类
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+" let g:cpp_posix_standard = 1
+" let g:cpp_experimental_simple_template_highlight = 1
+" let g:cpp_concepts_highlight = 1
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""coc"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -436,7 +449,7 @@ set cmdheight=2
 "
 " " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " " delays and poor user experience.
-set updatetime=300
+set updatetime=1000
 "
 " " Don't pass messages to |ins-completion-menu|.
 " set shortmess+=c
@@ -494,7 +507,7 @@ function! ShowDocumentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)

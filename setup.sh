@@ -86,6 +86,9 @@ if [[ bfirst -eq 1 ]];then
 	# Install clang-format
 	sudo apt install clang-format -y
 
+	# Install xclip
+	sudo apt install xclip -y
+
 fi
 
 #config
