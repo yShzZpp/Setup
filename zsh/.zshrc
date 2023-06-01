@@ -24,6 +24,7 @@ export PATH=/usr/local/python3/bin:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH_WAKATIME_PROJECT_DETECTION=true
 export ZSH_WAKATIME_BIN=~/.wakatime/wakatime-cli
+export ROS_PARALLEL_JOBS='-j8 -l8'
 
 
 # nickname

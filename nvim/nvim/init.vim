@@ -19,6 +19,7 @@ set autoindent
 set relativenumber
 set splitbelow
 set nu
+set redrawtime=10000
 " set foldmethod=indent
 let mapleader = ';'
 "折叠
