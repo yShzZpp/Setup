@@ -25,6 +25,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH_WAKATIME_PROJECT_DETECTION=true
 export ZSH_WAKATIME_BIN=~/.wakatime/wakatime-cli
 export ROS_PARALLEL_JOBS='-j8 -l8'
+export ZSH_DISABLE_COMPFIX=true
 
 
 # nickname
@@ -65,6 +66,7 @@ alias cdshare='cd ~/share'
 # ZSH_THEME="agnoster"
 ZSH_THEME="bullet-train"		#https:#https://github.com/caiogondim/bullet-train.zsh
 BULLETTRAIN_PROMPT_ORDER=(
+	custom
 	time
 	context
 	dir
@@ -73,13 +75,39 @@ BULLETTRAIN_PROMPT_ORDER=(
 	aws
 )
 
-#用户名和主机
-# BULLETTRAIN_CONTEXT_BG="#8a8a8a"		#灰
+#16进制颜色代码
+STAR_FIELD_RED="#c92337"
+STAR_FIELD_ORANGE="#e16237"
+STAR_FIELD_YELLOW="#d8a554"
+STAR_FIELD_DARK_BLUE="#233052"
+STAR_FIELD_MID_BLUE="#2f4b7a"
+STAR_FIELD_LIGHT_BLUE="#4a668e"
+#256色
+#for i in {0..255}; do echo -e "\033[38;5;${i}m${i}\t\033[0m"; done
+STAR_FIELD_RED=196
+STAR_FIELD_ORANGE=209
+STAR_FIELD_YELLOW=229
+STAR_FIELD_DARK_BLUE=27
+STAR_FIELD_MID_BLUE=75
+STAR_FIELD_LIGHT_BLUE=159
 
 #时间
 # BULLETTRAIN_TIME_BG="#9ed088"			#绿
-BULLETTRAIN_TIME_BG=green #绿
-BULLETTRAIN_TIME_FG=blcak
+# BULLETTRAIN_TIME_BG=green #绿
+BULLETTRAIN_TIME_BG=white
+BULLETTRAIN_TIME_FG=black
+
+#用户名和主机
+BULLETTRAIN_CONTEXT_BG=$STAR_FIELD_YELLOW
+BULLETTRAIN_CONTEXT_FG=black
+
+#目录
+BULLETTRAIN_DIR_BG=$STAR_FIELD_LIGHT_BLUE
+BULLETTRAIN_DIR_FG=black
+
+BULLETTRAIN_CUSTOM_MSG=🚀
+BULLETTRAIN_CUSTOM_BG=white
+BULLETTRAIN_CUSTOM_FG=black
 
 #git
 # BULLETTRAIN_GIT_BG="#D5D45F"			#黄
@@ -98,7 +126,7 @@ BULLETTRAIN_GIT_ADDED="%F{green}✚%F{black}"    #Icon for added     files on st
 
 #进程运行时间
 BULLETTRAIN_EXEC_TIME_ELAPSED=0;
-# BULLETTRAIN_EXEC_TIME_BG="#BFC1D9"		#蓝灰
+BULLETTRAIN_EXEC_TIME_BG=$STAR_FIELD_MID_BLUE
 
 
 # Set list of themes to pick from when loading at random
@@ -199,17 +227,17 @@ source ~/.localzshrc
 MEMORY=`free -mh | grep "Mem" | awk '{print "used:",$3,"/",$2,"( free: ",$4,")  "}'`
 MEM_USAGE=`free -m | grep "Mem" | awk '{printf("%3.1f%%", (($3/$2)*100))}'`
 # - IP..................: `hostname -I`
-echo "
-========================================================
-- Release.............: `cat /etc/issue|awk '{print $1,$2}'|tr -s '\n' ' '`
-- Kernel..............: `uname -r`
-- Hostname............: `uname -n`
-- Username............: `whoami`
-- Login Users.........: Total `users | wc -w` user(s)
-========================================================
-- Memory..............: $MEMORY
-- Memory usage........: $MEM_USAGE
-========================================================"
+# echo "
+# ========================================================
+# - Release.............: `cat /etc/issue|awk '{print $1,$2}'|tr -s '\n' ' '`
+# - Kernel..............: `uname -r`
+# - Hostname............: `uname -n`
+# - Username............: `whoami`
+# - Login Users.........: Total `users | wc -w` user(s)
+# ========================================================
+# - Memory..............: $MEMORY
+# - Memory usage........: $MEM_USAGE
+# ========================================================"
 # cat ~/mao
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -66,6 +66,23 @@ tmux_conf_theme_colour_17="#e4e4e4"   # white
 tmux_conf_theme_colour_lightGreen="#9ed088"   #light green
 tmux_conf_theme_colour_lightYellow="#eed075"   #light gray
 
+star_field_gray="#233052"
+star_field_red="#c92337"
+star_field_orange="#ffd700"
+star_field_yellow="#d8a554"
+star_field_dark_blue="#233052"
+star_field_mid_blue="#afeeee"
+star_field_light_blue="#4a668e"
+
+star_field_red=0
+# star_field_orange=0
+star_field_yellow=0
+# star_field_dark_blue=0
+# star_field_mid_blue=0
+# star_field_light_blue=0
+
+
+
 # default theme (ansi)
 #tmux_conf_theme_colour_1="colour0"
 #tmux_conf_theme_colour_2="colour8"
@@ -92,11 +109,11 @@ tmux_conf_theme_window_bg="default"
 # highlight focused pane (tmux >= 2.1), possible values are:
 #   - true
 #   - false (default)
-tmux_conf_theme_highlight_focused_pane=false
+tmux_conf_theme_highlight_focused_pane=true
 
 # focused pane colours:
 # tmux_conf_theme_focused_pane_bg="$tmux_conf_theme_colour_2"
-tmux_conf_theme_focused_pane_bg="$tmux_conf_theme_colour_10"
+tmux_conf_theme_focused_pane_bg="$star_field_gray"
 
 # pane border style, possible values are:
 #   - thin (default)
@@ -105,11 +122,11 @@ tmux_conf_theme_pane_border_style=thin
 
 # pane borders colours:
 tmux_conf_theme_pane_border="$tmux_conf_theme_colour_3"
-tmux_conf_theme_pane_active_border="$tmux_conf_theme_colour_8"
+tmux_conf_theme_pane_active_border="$tmux_conf_theme_colour_3"
 
 # pane indicator colours (when you hit <prefix> + q)
-tmux_conf_theme_pane_indicator="$tmux_conf_theme_colour_5"
-tmux_conf_theme_pane_active_indicator="$tmux_conf_theme_colour_10"
+tmux_conf_theme_pane_indicator="$star_field_mid_blue"
+tmux_conf_theme_pane_active_indicator="$star_field_orange"
 
 # status line style
 tmux_conf_theme_message_fg="$tmux_conf_theme_colour_1"
@@ -129,7 +146,7 @@ tmux_conf_theme_mode_attr="bold"
 # status line style
 tmux_conf_theme_status_fg="$tmux_conf_theme_colour_3"
 tmux_conf_theme_status_bg="$tmux_conf_theme_colour_1"
-tmux_conf_theme_status_attr="none"
+tmux_conf_theme_status_attr="bold"
 
 # terminal title
 #   - built-in variables are:
@@ -170,7 +187,7 @@ tmux_conf_theme_window_status_format="#I #W"
 #     - #{hostname_full_ssh}
 #     - #{username}
 #     - #{username_ssh}
-# 背景白
+# 当前窗口背景白
 tmux_conf_theme_window_status_current_fg="$tmux_conf_theme_colour_1"
 tmux_conf_theme_window_status_current_bg="$tmux_conf_theme_colour_7"
 tmux_conf_theme_window_status_current_attr="bold"
@@ -233,17 +250,19 @@ tmux_conf_theme_right_separator_sub="|"
 #     - #{username}
 #     - #{username_ssh}
 tmux_conf_theme_status_left=" ❐ #S | Uptime:#{?uptime_y, #{uptime_y}y,}#{?uptime_d, #{uptime_d}d,}#{?uptime_h, #{uptime_h}h,}#{?uptime_m,:#{uptime_m}m,} "
-tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | #{username}#{root} |#{hostname}"
+tmux_conf_theme_status_right=" #{prefix}#{mouse}#{pairing}#{synchronized}#{?battery_status,#{battery_status},}#{?battery_bar, #{battery_bar},}#{?battery_percentage, #{battery_percentage},} , %R , %d %b | [#{username}#{root}] |#{hostname}"
 
 # status left style
-tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_white,$tmux_conf_theme_colour_8"
-tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_lightGreen,$tmux_conf_theme_colour_lightGray,$tmux_conf_theme_colour_11"
+tmux_conf_theme_status_left_fg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_8"
+# tmux_conf_theme_status_left_bg="$tmux_conf_theme_colour_lightGreen,$tmux_conf_theme_colour_lightGray,$tmux_conf_theme_colour_11"
+tmux_conf_theme_status_left_bg="$star_field_mid_blue,$star_field_mid_blue,$star_field_yellow"
 tmux_conf_theme_status_left_attr="bold,none,none"
 
 # status right style
-tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_lightGray,$tmux_conf_theme_colour_white,$tmux_conf_theme_colour_14"
-tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_lightGray,$tmux_conf_theme_colour_lightGreen"
-tmux_conf_theme_status_right_attr="none,none,bold"
+tmux_conf_theme_status_right_fg="$tmux_conf_theme_colour_lightGray,$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_6"
+tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_15,$tmux_conf_theme_colour_lightGray,$tmux_conf_theme_colour_lightGray"
+# tmux_conf_theme_status_right_bg="$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_6,$tmux_conf_theme_colour_6"
+tmux_conf_theme_status_right_attr="none,none,none"
 
 # pairing indicator
 tmux_conf_theme_pairing="⚇"                 # U+2687

@@ -234,6 +234,7 @@ au Filetype FILETYPE let b:AutoPairs = {"(": ")","<": ">"}
 " nvim beautify
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+"~/.vim/plugged/vim-airline-themes/autoload/airline/themes/bubblegum.vim
 set laststatus=1  "永远显示状态栏
 "https://github.com/powerline/fonts 下载powerline字体
 let g:airline_powerline_fonts = 1  " 支持 powerline 字体
