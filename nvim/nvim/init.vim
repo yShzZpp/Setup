@@ -628,7 +628,7 @@ let g:winManagerWidth = 35
 "
 " wakatime
 Plug 'wakatime/vim-wakatime'
-let g:wakatime_PythonBinary = '/usr/bin/python'  " (Default: 'python')
+let g:wakatime_PythonBinary = '/usr/bin/python3'  " (Default: 'python')
 let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
 
 

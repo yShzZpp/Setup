@@ -55,6 +55,7 @@ alias tt="tmux -2 at -t"
 
 alias mountShare='sudo mount -t vboxsf LinuxShare ~/share'
 alias cdshare='cd ~/share'
+alias vim='nvim'
 
 # zsh 配置
 # Set name of the theme to load --- if set to "random", it will
@@ -189,7 +190,7 @@ BULLETTRAIN_EXEC_TIME_BG=$STAR_FIELD_MID_BLUE
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-wakatime)
+plugins=(git zsh-syntax-highlighting zsh-wakatime z vi-mode)
 # plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
