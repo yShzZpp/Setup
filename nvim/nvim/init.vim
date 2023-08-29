@@ -259,7 +259,9 @@ let g:airline_right_sep = ''
 " let g:airline_right_sep = ''
 " let g:airline_right_alt_sep = ""
 "
-let g:airline_right_alt_sep = ""
+let g:airline_right_alt_sep = "🖥"
+" let g:airline_right_alt_sep = "🔬️"
+" let g:airline_right_alt_sep = ""
 " let g:airline_right_alt_sep = ''
 " let g:airline_right_alt_sep = '«'
 " let g:airline_right_alt_sep = '●'
@@ -267,7 +269,8 @@ let g:airline_right_alt_sep = ""
 
 let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
-let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_symbols.whitespace = ' 🕴
+" let g:airline_symbols.whitespace = 'Ξ'
 "使用 :AirlineTheme xxx 更换主题
 nnoremap <silent> <leader>1 :AirlineTheme base16<cr>
 nnoremap <silent> <leader>2 :AirlineTheme molokai<cr>
