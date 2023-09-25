@@ -102,11 +102,85 @@ Plug 'tpope/vim-speeddating'
 " NERDTree
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" ma 新建文件
-" md 删除文件
-" mm 移动文件|修改文件名
-" C 设置当前目录为根目录
-" 打开nerdtree
+
+" NERDTree Icon
+Plug 'ryanoasis/vim-devicons'
+
+" multi cursor #Ctrl 上下左右
+Plug 'mg979/vim-visual-multi'
+
+" git and svn
+Plug 'mhinz/vim-signify'
+
+" word surroud inser {} "" ''
+Plug 'tpope/vim-surround'
+
+"select where amount { " '
+Plug 'gcmt/wildfire.vim'
+
+" pairs
+Plug 'jiangmiao/auto-pairs'
+
+" nvim beautify
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" 注释 virtual leader cc/cu
+Plug 'preservim/nerdcommenter'
+
+" indentLine
+Plug 'Yggdroot/indentLine'
+
+" #if end
+" Plug 'alpaca-tc/vim-endwise'
+
+"rainbow
+Plug 'frazrepo/vim-rainbow'
+
+"fzf
+Plug 'junegunn/fzf', { 'dir':'~/.fzf','do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+
+"highlight
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'octol/vim-cpp-enhanced-highlight'
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" 通知
+" Plug 'rcarriga/nvim-notify'
+
+" 丝滑的移动
+" Plug 'terryma/vim-smooth-scroll'
+
+"tagbar
+Plug 'majutsushi/tagbar'
+
+Plug 'vim-scripts/winmanager'
+
+" wakatime
+" Plug 'wakatime/vim-wakatime'
+
+"文本替换
+" Plug 'chxuan/vim-edit'
+
+"高级搜索
+Plug 'easymotion/vim-easymotion'
+
+"自动对齐
+Plug 'chiel92/vim-autoformat'
+
+" 代码片段
+" Plug 'sirver/ultisnips'
+" Plug 'keelii/vim-snippets'
+
+" codeium
+Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+
+call plug#end()
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""配置
+
 " map <silent> <C-e> :NERDTreeToggle<CR>
 " 查找当前文件所在目录
 map <leader>v :NERDTreeFind<CR>
@@ -182,15 +256,10 @@ let g:NERDTreeExtensionHighlightColor['launch'] = s:lightGreen
 
 
 " NERDTree Icon
-Plug 'ryanoasis/vim-devicons'
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
-" multi cursor #Ctrl 上下左右
-Plug 'mg979/vim-visual-multi'
-
 " git and svn
-Plug 'mhinz/vim-signify'
 " 设置要检查的VCS
 let g:signify_vcs_list = ['git']
 " 插入模式下指定updatetime时间后无操作将缓存区交换文件写入磁盘
@@ -216,24 +285,17 @@ omap ac <plug>(signify-motion-outer-pending)
 xmap ac <plug>(signify-motion-outer-visual)
 
 " word surroud inser {} "" ''
-Plug 'tpope/vim-surround'
 " cs"'            # 替换 ==> "Hello world!" -> 'Hello world!'
 " ds"             # 删除  ==> "Hello world!" -> Hello world!
 " csw"            # 添加  ==> Hello -> "Hello"
 " yss"            # 添加-整行 ==> Hello world -> "Hello world"
 " S"			  # 可视模式下 添加
 
-"select where amount { " '
-Plug 'gcmt/wildfire.vim'
 
 " pairs
-Plug 'jiangmiao/auto-pairs'
 au Filetype FILETYPE let b:AutoPairs = {"(": ")","<": ">"}
 
-"
 " nvim beautify
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 "~/.vim/plugged/vim-airline-themes/autoload/airline/themes/bubblegum.vim
 set laststatus=1  "永远显示状态栏
 "https://github.com/powerline/fonts 下载powerline字体
@@ -336,7 +398,6 @@ nmap <A-\> <Plug>AirlineSelectNextTab
 nmap <leader>q :bp<cr>:bd #<cr>
 
 " 注释 virtual leader cc/cu
-Plug 'preservim/nerdcommenter'
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -364,15 +425,11 @@ let g:NERDToggleCheckAllLines = 1
 
 
 " indentLine
-Plug 'Yggdroot/indentLine'
 let g:indent_guides_guide_size            = 1  " 指定对齐线的尺寸
 let g:indent_guides_start_level           = 2  " 从第二层开始可视化显示缩进
 
-" #if end
-" Plug 'alpaca-tc/vim-endwise'
 
 "rainbow
-Plug 'frazrepo/vim-rainbow'
 au FileType c,cpp,objc,objcpp call rainbow#load()
 let g:rainbow_active = 1
 
@@ -388,8 +445,6 @@ let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
 
 
 "fzf
-Plug 'junegunn/fzf', { 'dir':'~/.fzf','do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 " let g:fzf_action = {
 "       \ 'ctrl-t': 'tab split',
 "       \ 'ctrl-s': 'split',
@@ -423,17 +478,14 @@ command! -bang -nargs=* Ag
 
 " complete
 " """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""highlight"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" Plug 'octol/vim-cpp-enhanced-highlight'
 " let g:cpp_class_scope_highlight = 1 "类
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 " let g:cpp_posix_standard = 1
 " let g:cpp_experimental_simple_template_highlight = 1
 " let g:cpp_concepts_highlight = 1
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""coc"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""coc"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 " let g:coc_global_extensions = [
 "   \ 'coc-clangd',
@@ -562,19 +614,16 @@ nmap <silent> <C-s> <Plug>(coc-cursors-position)
 
 
 " 丝滑的移动
-" Plug 'terryma/vim-smooth-scroll'
 " noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 " noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 "
 " 通知
-" Plug 'rcarriga/nvim-notify'
 " require("notify")("My super important message")
 " vim.notify = require("notify")
 " vim.notify("This is an error message", "error")
 
-"tagbar比taglist好
-Plug 'majutsushi/tagbar'
+"tagbar
 nnoremap <silent> tb :TagbarToggle<CR>
 "去除第一行的帮助信息
 let g:tagbar_ctags_bin = '/usr/bin/ctags-exuberant'                       "tagbar以来ctags插件
@@ -584,16 +633,7 @@ let g:tagbar_compact = 1
 " let g:tagbar_left = 1                                          "让tagbar在页面左侧显示，默认右边
 let g:tagbar_sort = 0
 
-"bufexplorer
-" Plug 'jlanzarotta/bufexplorer'
-"nerdtree-tabs
-" Plug 'jistr/vim-nerdtree-tabs'
 
-
-" 窗口管理
-" 合并taglist和nerdtree
-" Plug 'vim-scripts/winmanager--Fox'
-Plug 'vim-scripts/winmanager'
 """"""""""""""""""""""""""""""""""""""配置nerdtree和 taglist""""""""""""""""""""""""""""""""""""""
 
 " winmanager配置
@@ -626,35 +666,23 @@ let g:tagbar_vertical = 30
 nmap <silent> <C-e> :WMToggle<CR>
 " nmap <silent> <C-e> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR>
 let g:winManagerWidth = 35
-"显示函数的定义
-" Plug 'wesleyche/srcexpl'
-"
+
 " wakatime
-Plug 'wakatime/vim-wakatime'
-let g:wakatime_PythonBinary = '/usr/bin/python3'  " (Default: 'python')
-let g:wakatime_OverrideCommandPrefix = '/usr/bin/wakatime'  " (Default: '')
+let g:wakatime_PythonBinary = '/usr/bin/python3.7'  " (Default: 'python')
+let g:wakatime_OverrideCommandPrefix = '~/.wakatime/wakatime-cli'  " (Default: '')
+let g:wakatime_hide_statusline = 1
 
 
 "文本替换
-" Plug 'chxuan/vim-edit'
 nnoremap Y :CopyText<cr>
 nnoremap D :DeleteText<cr>
 nnoremap C :ChangeText<cr>
 
 
 "高级搜索
-Plug 'easymotion/vim-easymotion'
 let g:EasyMotion_leader_key = '<leader>' "似乎会和coc冲突
 
-"对齐
-" Plug 'godlygeek/tabular'
-" nmap <Leader>= :Tabularize /=<CR>
-" vmap <Leader>= :Tabularize /=<CR>
-" nmap <Leader>: :Tabularize /:\zs<CR>
-" vmap <Leader>: :Tabularize /:\zs<CR>
-
 "自动对齐
-Plug 'chiel92/vim-autoformat'
 " 保存自动对齐
 " autocmd FileType c,cpp autocmd BufWritePre * :Autoformat
 
@@ -667,6 +695,10 @@ Plug 'chiel92/vim-autoformat'
 " vnoremap <leader>cf :call FormatCode(visualmode(), "Chromium")<CR>
 " nnoremap <leader>lf :call FormatCode("", "LLVM")<CR>
 " vnoremap <leader>lf :call FormatCode(visualmode(), "LLVM")<CR>
+"
+let g:formatdef_python = 'yapf -p -i --style ~/.python-format.yapf'
+" let g:formatters_python = ['yapf']  " 或 ['autopep8'] 或 ['black']
+" let g:autoformat_python = 1
 
 func! FormatCode(exe_mode, style) range
 	if a:exe_mode == ""
@@ -685,8 +717,6 @@ func! FormatCode(exe_mode, style) range
 endfunc
 
 " 代码片段
-" Plug 'sirver/ultisnips'
-" Plug 'keelii/vim-snippets'
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsExpandTrigger="<enter>"
 " " 使用 tab 切换下一个触发点，shit+tab 上一个触发点
@@ -697,10 +727,7 @@ endfunc
 " 使用 UltiSnipsEdit 命令时垂直分割屏幕
 " let g:UltiSnipsEditSplit="vertical"
 
-" Plug 'yShzZpp/nvim-test-plug'
 
-
-call plug#end()
 
 " source ~/mygit/nvim-test-plug/plugin/nvim-test-plug.vim
 " let g:weather_city="韶关"
