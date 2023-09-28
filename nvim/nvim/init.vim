@@ -180,6 +180,9 @@ Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 " nerdtree git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
+" buffergator
+Plug 'jeetsukumaran/vim-buffergator'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""配置
@@ -752,6 +755,10 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
                 \ 'Clean'     :'✔︎',
                 \ 'Unknown'   :'?',
                 \ }
+
+
+" buffergator
+" Plug 'jeetsukumaran/vim-buffergator'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
 " echo "Here's a bigger chunk of Lua code"
