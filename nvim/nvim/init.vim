@@ -177,6 +177,9 @@ Plug 'chiel92/vim-autoformat'
 " codeium
 Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
+" nerdtree git
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""配置
@@ -732,6 +735,23 @@ endfunc
 " source ~/mygit/nvim-test-plug/plugin/nvim-test-plug.vim
 " let g:weather_city="韶关"
 " nnoremap <leader>y :Ysh<CR>
+
+" nerdtree git
+" let g:NERDTreeGitStatusUseNerdFonts = 1
+" let g:NERDTreeGitStatusShowIgnored = 1
+let g:NERDTreeGitStatusPorcelainVersion = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+                \ 'Modified'  :'✹',
+                \ 'Staged'    :'✚',
+                \ 'Untracked' :'✭',
+                \ 'Renamed'   :'➜',
+                \ 'Unmerged'  :'═',
+                \ 'Deleted'   :'✖',
+                \ 'Dirty'     :'✗',
+                \ 'Ignored'   :'☒',
+                \ 'Clean'     :'✔︎',
+                \ 'Unknown'   :'?',
+                \ }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
 " echo "Here's a bigger chunk of Lua code"
