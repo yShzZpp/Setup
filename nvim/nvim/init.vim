@@ -175,13 +175,13 @@ Plug 'chiel92/vim-autoformat'
 " Plug 'keelii/vim-snippets'
 
 " codeium
-Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+" Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
 
 " nerdtree git
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " buffergator
-Plug 'jeetsukumaran/vim-buffergator'
+" Plug 'jeetsukumaran/vim-buffergator'
 
 call plug#end()
 
@@ -201,7 +201,7 @@ let NERDTreeShowBookmarks=1  " 开启Nerdtree时自动显示Bookmarks
 " 设置树的显示图标
 let g:NERDTreeDirArrowExpandable = '▶ '
 let g:NERDTreeDirArrowCollapsible = '▼ '
-" let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
+let NERDTreeIgnore = ['\.pyc$']  " 过滤所有.pyc文件不显示
 let g:NERDTreeShowLineNumbers=0 " 是否显示行号
 let g:NERDTreeHidden=0     "不显示隐藏文件
 let NERDTreeShowHidden=1
@@ -635,38 +635,72 @@ nnoremap <silent> tb :TagbarToggle<CR>
 let g:tagbar_ctags_bin = '/usr/bin/ctags-exuberant'                       "tagbar以来ctags插件
 let g:tagbar_compact = 1
 "当编辑代码时，在Tagbar自动追踪变量
-" let g:tagbar_autoshowtag = 1
+let g:tagbar_autoshowtag = 1
 " let g:tagbar_left = 1                                          "让tagbar在页面左侧显示，默认右边
 let g:tagbar_sort = 0
+let g:tagbar_vertical = 30
 
 
-""""""""""""""""""""""""""""""""""""""配置nerdtree和 taglist""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""配置nerdtree和 tagbar""""""""""""""""""""""""""""""""""""""
 
 " winmanager配置
 let g:winManagerWindowLayout='NERDTree|Tagbar'
+let g:winManagerWindowClose='NERDTreeClose|TagbarClose'
 
 let g:NERDTree_title='[NERD Tree]'
-function! NERDTree_Start()
+function! NERDTree_Start_back()
 	exec 'q'
 	exec 'NERDTreeToggle'
 endfunction
 
 function! NERDTree_IsValid()
-	return 1
+  return 1
 endfunction
 
-let g:Tagbar_title='[Tagbar]&[NERD Tree]'
-function! Tagbar_Start()
+function! IsNERDTreeOpen()
+	let nerdtreeOpen = bufwinnr("NERD_tree") != -1
+	return nerdtreeOpen
+endfunction
+
+let g:Tagbar_title='[TagbarI]'
+function! Tagbar_Start_back()
 	exec 'q'
 	exec 'TagbarToggle'
 	return 1
 endfunction
 
 function! Tagbar_IsValid()
-	return 1
+  return 1
 endfunction
-let g:tagbar_vertical = 30
 
+function! IsTagbarOpen()
+	let tagbarOpen = bufwinnr("__Tagbar__") != -1
+	return tagbarOpen
+endfunction
+
+" 打开 NERDTree 窗口
+function! NERDTree_Start()
+	if IsNERDTreeOpen()
+		echo "NERDTree is already open"
+		exec "NERDTreeClose"
+  else
+		echo "NERDTree is not open"
+	  exec 'q'
+		exec 'NERDTreeToggle'
+  endif
+endfunction
+
+" 打开 Tagbar 窗口
+function! Tagbar_Start()
+	if IsTagbarOpen()
+		echo "Tagbar is already open"
+		exec "TagbarClose"
+  else
+		echo "Tagbar is not open"
+	  exec 'q'
+		exec 'TagbarToggle'
+  endif
+endfunction
 
 "定义打开关闭winmanager快捷键为
 nmap <silent> <C-e> :WMToggle<CR>
@@ -758,9 +792,29 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 
 " buffergator
-" Plug 'jeetsukumaran/vim-buffergator'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
+" copilot
+imap <C-x> <Plug>(copilot-dismiss)
+imap <C-j> <Plug>(copilot-next)
+imap <C-k> <Plug>(copilot-previous)
+
+
+" codeium
+" let g:codeium_enabled = v:true      "使能
+" let g:codeium_manual = v:true       "手动补全
+" let g:codeium_idle_delay = 500      "自动补全等待时间
+" let g:codeium_render = v:false      "渲染使能
+" let g:codeium_tab_fallback = "\t"   "无建议的反馈
+" let g:codeium_filetypes = {
+"     \ "bash": v:true,
+"     \ "typescript": v:true,
+"     \ "cpp": v:true,
+"     \ "c": v:true,
+"     \ "h": v:true,
+"     \ }
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""lua""""""""""""""""""""""""""""""""""""""""""""""""""""
 " echo "Here's a bigger chunk of Lua code"
 
 
