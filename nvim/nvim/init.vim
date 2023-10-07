@@ -678,13 +678,20 @@ function! IsTagbarOpen()
 	return tagbarOpen
 endfunction
 
+function! OpenWinManager()
+	if !IsTagbarOpen() && !IsNERDTreeOpen()
+		execute "WMToggle"
+	else
+		exec "WMClose"
+		exec "TagbarClose"
+	endif
+endfunction
+
 " 打开 NERDTree 窗口
 function! NERDTree_Start()
 	if IsNERDTreeOpen()
-		echo "NERDTree is already open"
 		exec "NERDTreeClose"
   else
-		echo "NERDTree is not open"
 	  exec 'q'
 		exec 'NERDTreeToggle'
   endif
@@ -693,17 +700,17 @@ endfunction
 " 打开 Tagbar 窗口
 function! Tagbar_Start()
 	if IsTagbarOpen()
-		echo "Tagbar is already open"
 		exec "TagbarClose"
   else
-		echo "Tagbar is not open"
 	  exec 'q'
 		exec 'TagbarToggle'
   endif
 endfunction
 
 "定义打开关闭winmanager快捷键为
-nmap <silent> <C-e> :WMToggle<CR>
+"判断winmanager是否打开，如果打开则关闭，否则打开
+" nmap <silent> <C-e> :WMToggle<CR>
+nmap <silent> <C-e> : call OpenWinManager()<CR>
 " nmap <silent> <C-e> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR>
 let g:winManagerWidth = 35
 
