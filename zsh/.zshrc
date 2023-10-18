@@ -14,6 +14,9 @@ compile_json="-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
 
 # environment
 #
+export LANGUAGE="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
 export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8
@@ -23,7 +26,7 @@ export PATH=/home/zzpp/ybin:$PATH
 export PATH=/usr/local/python3/bin:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export ZSH_WAKATIME_PROJECT_DETECTION=true
-export ZSH_WAKATIME_BIN=~/.wakatime/wakatime-cli
+# export ZSH_WAKATIME_BIN=~/.wakatime/wakatime-cli
 export ROS_PARALLEL_JOBS='-j8 -l8'
 export ZSH_DISABLE_COMPFIX=true
 
@@ -32,13 +35,7 @@ export ZSH_DISABLE_COMPFIX=true
 #
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="source ~/.oh-my-zsh"
-alias stnginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf"
-alias renginx="sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf -s reload"
-alias nginxconfig="nvim /usr/local/nginx/conf/nginx.conf"
-alias cdgit="cd ~/mygit/Company_Project/candela/project/"
-alias cdm="cd ~/candela_gitlab/candela-robot/missionschedule/"
 alias cdlab="cd ~/gitlab"
-alias cdhisi="cd /home/Hisilicon/"
 
 alias nvim='TERM=xterm-256color /bin/nvim'
 alias isaigu="ssh isaiguserver250@n3879m4762.zicp.vip -p 21068"
@@ -53,7 +50,6 @@ alias tls="tmux list-sessions "
 alias tlw="tmux list-windows"
 alias tt="tmux -2 at -t"
 
-alias mountShare='sudo mount -t vboxsf LinuxShare ~/share'
 alias cdshare='cd ~/share'
 alias vim='nvim'
 
@@ -190,7 +186,7 @@ BULLETTRAIN_EXEC_TIME_BG=$STAR_FIELD_MID_BLUE
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-wakatime z vi-mode)
+plugins=(git zsh-syntax-highlighting wakatime z vi-mode)
 # plugins=(git zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh

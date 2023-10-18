@@ -159,7 +159,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-scripts/winmanager'
 
 " wakatime
-" Plug 'wakatime/vim-wakatime'
+Plug 'wakatime/vim-wakatime'
 
 "文本替换
 " Plug 'chxuan/vim-edit'
