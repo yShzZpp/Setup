@@ -73,8 +73,8 @@ nnoremap <silent> <leader>r :so %<CR>
 " let g:coc_disable_startup_warning = 1
 
 
-nnoremap <silent> <Leader>f :Autoformat<CR>
-vnoremap <silent> <Leader>f :Autoformat<CR>
+nnoremap <silent> <Leader>f :Autoformat<CR>:w<CR>
+vnoremap <silent> <Leader>f :Autoformat<CR>:w<CR>
 
 
 " 保存文件关闭时的位置
@@ -168,7 +168,8 @@ Plug 'vim-scripts/winmanager'
 Plug 'easymotion/vim-easymotion'
 
 "自动对齐
-Plug 'chiel92/vim-autoformat'
+" Plug 'chiel92/vim-autoformat'
+Plug 'vim-autoformat/vim-autoformat'
 
 " 代码片段
 " Plug 'sirver/ultisnips'
@@ -645,7 +646,6 @@ let g:tagbar_vertical = 30
 
 " winmanager配置
 let g:winManagerWindowLayout='NERDTree|Tagbar'
-let g:winManagerWindowClose='NERDTreeClose|TagbarClose'
 
 let g:NERDTree_title='[NERD Tree]'
 function! NERDTree_Start_back()
@@ -662,7 +662,7 @@ function! IsNERDTreeOpen()
 	return nerdtreeOpen
 endfunction
 
-let g:Tagbar_title='[TagbarI]'
+let g:Tagbar_title='[Tagbar]'
 function! Tagbar_Start_back()
 	exec 'q'
 	exec 'TagbarToggle'
@@ -711,7 +711,6 @@ endfunction
 "判断winmanager是否打开，如果打开则关闭，否则打开
 " nmap <silent> <C-e> :WMToggle<CR>
 nmap <silent> <C-e> : call OpenWinManager()<CR>
-" nmap <silent> <C-e> :if IsWinManagerVisible() <BAR> WMToggle<CR> <BAR> else <BAR> WMToggle<CR>:q<CR> endif <CR>
 let g:winManagerWidth = 35
 
 " wakatime
@@ -743,9 +742,19 @@ let g:EasyMotion_leader_key = '<leader>' "似乎会和coc冲突
 " nnoremap <leader>lf :call FormatCode("", "LLVM")<CR>
 " vnoremap <leader>lf :call FormatCode(visualmode(), "LLVM")<CR>
 "
-let g:formatdef_python = 'yapf -p -i --style ~/.python-format.yapf'
-" let g:formatters_python = ['yapf']  " 或 ['autopep8'] 或 ['black']
-" let g:autoformat_python = 1
+
+" let g:formatterpath = ['/home/zzpp/ybin', '/home/zzpp/.local/bin']
+" let g:formatdef_python = 'yapf -p -i --style ~/.python-format.yapf'
+" let g:formatdef_python = 'autopep8'
+
+let g:formatters_python = ['black']
+let g:formatdef_black = 'black -S -t py27 --line-length 79 --target-version py37 --skip-string-normalization --indent 2 -'
+let g:formatdef_black = 'black -q ".(&textwidth ? "-l".&textwidth : "")." -'
+let g:formatdef_autopep8 = '"autopep8 --indent-size 2 -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
+
+let g:formatdef_shfmt = '"shfmt -i ".(&expandtab ? shiftwidth() : "2")'
+" let g:formatdef_shfmt = 'shfmt -i 4'
+" let g:formatters_sh = ['shfmt']
 
 func! FormatCode(exe_mode, style) range
 	if a:exe_mode == ""
@@ -802,8 +811,9 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 
 " copilot
 imap <C-x> <Plug>(copilot-dismiss)
-imap <C-j> <Plug>(copilot-next)
-imap <C-k> <Plug>(copilot-previous)
+imap <C-s> <Plug>(copilot-suggest)
+imap <C-a> <Plug>(copilot-previous)
+imap <C-d> <Plug>(copilot-next)
 
 
 " codeium
