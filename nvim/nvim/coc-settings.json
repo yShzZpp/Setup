@@ -1,3 +1,8 @@
 {
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd"
+  "clangd.path": "/usr/bin/clangd-16",
+  "python.analysis.typeshedPaths": ["/usr/local/bin/pyright"], // 可选，指定Typeshed路径
+  "python.analysis.autoSearchPaths": true, // 可选，自动搜索Python路径
+  "python.analysis.autoImportCompletions": true, // 可选，自动导入补全
+  "python.analysis.useLibraryCodeForTypes": true, // 可选，使用库代码进行类型推断
+
 }

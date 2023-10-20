@@ -17,33 +17,33 @@ if [[ bfirst -eq 1 ]];then
 	# mv ./sources.list /etc/apt/
 
 	# update
-	sudo apt update
+	apt update
 
 	# Install
-	sudo apt install curl git openssh-server net-tools
+	apt install curl git openssh-server net-tools
 	git config --global user.email "2036459752@qq.com"
 	git config --global user.name "zzpp"
 
 
 	# Install pip
-	sudo apt install pip -y
+	apt install pip -y
 
 	# Install node npm
-	curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
-	sudo apt-get install yarn -y
-	sudo apt-get install -y nodejs
+	curl -sL https://deb.nodesource.com/setup_12.x | -E bash -
+	apt-get install yarn -y
+	apt-get install -y nodejs
 	npm cache clean -f
-	sudo npm install -g n -y
+	npm install -g n -y
 	n stable
 
 	# Install zsh
-	sudo apt install zsh
+	apt install zsh
 
 	# Install ohmyzsh
-	sudo sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+	sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 	# Install oh my tmux
-	sudo apt install tmux -y
+	apt install tmux -y
 	git clone https://github.com/gpakosz/.tmux.git ~/.tmux
 	# ln -s -f ~/.tmux/.tmux.conf ~/.tmux.conf
 
@@ -51,43 +51,48 @@ if [[ bfirst -eq 1 ]];then
 	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 	# Install Python3
-	sudo apt-get install -y python-dev python-pip python3-dev
-	sudo apt-get install -y python3-setuptools
-	sudo easy_install3 pip
+	apt-get install -y python-dev python-pip python3-dev
+	apt-get install -y python3-setuptools
+	easy_install3 pip
 
 	# Install nvim
-	sudo add-apt-repository ppa:neovim-ppa/stable
-	sudo apt-get update
-	sudo apt-get install -y neovim
+	add-apt-repository ppa:neovim-ppa/stable
+	apt-get install -y neovim
 
 	# Install ctag
-	sudo apt-get install ctags -y 
+	apt-get install ctags -y 
 
 	# Install fzf
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install
 
 	# Install ag
-	sudo apt-get install silversearcher-ag -y
+	apt-get install silversearcher-ag -y
 
 	# Install clangd
-	# sudo bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-	sudo ./clang/llvm.sh 14
+	# bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
+	./clang/llvm.sh 14
 
 	# Install nerdfonts
-	sudo unzip SourceCodePro -d /usr/share/fonts/SourceCodePro
+	unzip SourceCodePro -d /usr/share/fonts/SourceCodePro
 
 	# Install wakatime
-	sudo pip install wakatime
+	pip install wakatime
 	git clone https://github.com/sobolevn/wakatime-zsh-plugin.git ~/.oh-my-zsh/custom/plugins/wakatime
 	WAKATIME_PATH=`which wakatime`
 	ln -s -f $WAKATIME_PATH ~/.wakatime/wakatime-cli
 
 	# Install clang-format
-	sudo apt install clang-format -y
+	apt install clang-format -y
 
 	# Install xclip
-	sudo apt install xclip -y
+	apt install xclip -y
+
+	# 
+	apt-get install locales -y
+	locale-gen zh_CN.UTF-8
+	update-locale LANG=zh_CN.UTF-8
+
 
 fi
 

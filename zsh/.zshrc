@@ -14,9 +14,9 @@ compile_json="-DCMAKE_EXPORT_COMPILE_COMMANDS=1"
 
 # environment
 #
-export LANGUAGE="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-export LANG="en_US.UTF-8"
+# export LANGUAGE="en_US.UTF-8"
+# export LANG="en_US.UTF-8"
+# export LC_ALL="en_US.UTF-8"
 export TERM="xterm-256color"
 export ZSH="$HOME/.oh-my-zsh"
 export LC_ALL=en_US.UTF-8
@@ -238,4 +238,8 @@ MEM_USAGE=`free -m | grep "Mem" | awk '{printf("%3.1f%%", (($3/$2)*100))}'`
 # cat ~/mao
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+bindkey ‘^R’ history-incremental-search-backward
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

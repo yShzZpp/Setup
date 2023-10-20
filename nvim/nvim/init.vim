@@ -747,10 +747,21 @@ let g:EasyMotion_leader_key = '<leader>' "似乎会和coc冲突
 " let g:formatdef_python = 'yapf -p -i --style ~/.python-format.yapf'
 " let g:formatdef_python = 'autopep8'
 
-let g:formatters_python = ['black']
+function! MyAutopep8Format()
+    let indent = 2
+    let cmd = 'autopep8 --indent ' . indent . ' -'
+    let input = getline(1, '$')
+    let output = system(cmd, input)
+    return split(output, "\n")
+endfunction
+
+" 设置formatexpr以使用自定义格式化函数
+setlocal formatexpr=MyAutopep8Format()
+
+" let g:formatters_python = ['black']
 let g:formatdef_black = 'black -S -t py27 --line-length 79 --target-version py37 --skip-string-normalization --indent 2 -'
 let g:formatdef_black = 'black -q ".(&textwidth ? "-l".&textwidth : "")." -'
-let g:formatdef_autopep8 = '"autopep8 --indent-size 2 -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
+let g:formatdef_autopep8 = '"autopep8 --indent 2 -".(g:DoesRangeEqualBuffer(a:firstline, a:lastline) ? " --range ".a:firstline." ".a:lastline : "")." ".(&textwidth ? "--max-line-length=".&textwidth : "")'
 
 let g:formatdef_shfmt = '"shfmt -i ".(&expandtab ? shiftwidth() : "2")'
 " let g:formatdef_shfmt = 'shfmt -i 4'
