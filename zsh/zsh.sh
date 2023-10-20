@@ -37,5 +37,6 @@ if [[ $? == 1 ]];then
 fi
 
 pwd=`pwd`
-ln -s -f $pwd/zsh/.zshrc ~/
+rm ~/.zshrc -rf
+cp -r -f $pwd/zsh/.zshrc ~/
 cp $pwd/zsh/bullet-train.zsh-theme ~/.oh-my-zsh/custom/themes/
