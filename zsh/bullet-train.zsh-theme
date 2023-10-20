@@ -336,10 +336,13 @@ fi
 # A few functions to make it easy and re-usable to draw segmented prompts
 # ------------------------------------------------------------------------------
 
+# 修改
 CURRENT_BG='NONE'
-# 设置样式
+# CURRENT_BG=''
 # SEGMENT_SEPARATOR=''
-SEGMENT_SEPARATOR=''
+# SEGMENT_SEPARATOR=''
+# SEGMENT_SEPARATOR=''
+SEGMENT_SEPARATOR=''
 
 # Begin a segment
 # Takes three arguments, background, foreground and text. All of them can be omitted,
