@@ -37,5 +37,5 @@ if [[ $? == 1 ]];then
 fi
 
 pwd=`pwd`
-ln -s -f $pwd/tmux/.tmux.conf ~/
-ln -s -f $pwd/tmux/.tmux.conf.local ~/
+cp -r -f $pwd/tmux/.tmux.conf ~/
+cp -r -f $pwd/tmux/.tmux.conf.local ~/

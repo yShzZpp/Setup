@@ -37,4 +37,4 @@ if [[ $? == 1 ]];then
 fi
 
 pwd=`pwd`
-ln -s -f $pwd/clang/.clang-format ~
+cp -r -f $pwd/clang/.clang-format ~

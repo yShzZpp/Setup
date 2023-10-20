@@ -20,7 +20,7 @@ if [[ bfirst -eq 1 ]];then
 	apt update
 
 	# Install
-	apt install curl git openssh-server net-tools
+	apt install curl git openssh-server net-tools unzip -y
 	git config --global user.email "2036459752@qq.com"
 	git config --global user.name "zzpp"
 
@@ -71,7 +71,7 @@ if [[ bfirst -eq 1 ]];then
 
 	# Install clangd
 	# bash -c "$(wget -O - https://apt.llvm.org/llvm.sh)"
-	./clang/llvm.sh 14
+	# ./clang/llvm.sh 14
 
 	# Install nerdfonts
 	unzip SourceCodePro -d /usr/share/fonts/SourceCodePro
@@ -79,8 +79,8 @@ if [[ bfirst -eq 1 ]];then
 	# Install wakatime
 	pip install wakatime
 	git clone https://github.com/sobolevn/wakatime-zsh-plugin.git ~/.oh-my-zsh/custom/plugins/wakatime
-	WAKATIME_PATH=`which wakatime`
-	ln -s -f $WAKATIME_PATH ~/.wakatime/wakatime-cli
+	# WAKATIME_PATH=`which wakatime`
+	# ln -s -f $WAKATIME_PATH ~/.wakatime/wakatime-cli
 
 	# Install clang-format
 	apt install clang-format -y
@@ -97,9 +97,6 @@ if [[ bfirst -eq 1 ]];then
 fi
 
 #config
-
-# mao
-cp ./mao ~
 
 # fonts
 chmod a+x font/font.sh

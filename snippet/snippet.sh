@@ -37,4 +37,4 @@ if [[ $? == 1 ]];then
 fi
 
 pwd=`pwd`
-ln -s -f $pwd/snippet/ultisnips/* ~/.vim/plugged/vim-snippets/UltiSnips/
+cp -r -f $pwd/snippet/ultisnips/* ~/.vim/plugged/vim-snippets/UltiSnips/
